@@ -19,6 +19,8 @@ public class Main extends Application {
         System.out.println("helloWorld2");
 
     }
+    
+    System.out.println("HELL WORLD");
 
 
     public static void main(String[] args) {
