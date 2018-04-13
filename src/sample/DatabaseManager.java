@@ -31,4 +31,21 @@ public class DatabaseManager {
         }
         return false;
     }
+    public void addAccount(String username,String password){
+
+        try {
+            st.executeUpdate("Insert into users (username, password) values ('" +username +"','"+ password+"');");
+
+
+
+
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+
+        }
+
+
+
+    }
 }
