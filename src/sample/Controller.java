@@ -20,18 +20,19 @@ public class Controller {
     Button Signin;
 
     @FXML TextField PassWord;
-boolean password=false;
 
 
+
+DatabaseManager db=new DatabaseManager();
 
     public void SigninAction(javafx.event.ActionEvent event){
-
+boolean password=db.passwordCheck(UserName.getText(),PassWord.getText());
         if (password==true){
 
-
+            System.out.println("login");
         }
        else if (password==false){
-
+            System.out.println("error");
         }
 
     }
