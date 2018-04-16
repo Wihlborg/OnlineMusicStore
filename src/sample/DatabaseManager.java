@@ -16,11 +16,13 @@ public class DatabaseManager {
         }
     }
 
-    public boolean passwordCheck(String username, String password){
+    public boolean passwordCheck(String username, String password){ //TODO Hash and salt password
         try {
-            ResultSet rs = st.executeQuery("SELECT * FROM users WHERE username= '" + username +"';");
+            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
+            checkStatement.setString(1, username);
+            ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
-                if (rs.getString("password").equalsIgnoreCase(password)){
+                if (rs.getString("password").equals(password)){
                     return true;
                 }
             }
@@ -31,21 +33,15 @@ public class DatabaseManager {
         }
         return false;
     }
-    public void addAccount(String username,String password){
+    public void addAccount(String username,String password){ //TODO Hash and salt password
 
         try {
-            st.executeUpdate("Insert into users (username, password) values ('" +username +"','"+ password+"');");
-
-
-
-
-
+            PreparedStatement createStatement = c.prepareStatement("Insert into users (username, password) values (? , ?);");
+            createStatement.setString(1, username);
+            createStatement.setString(2, password);
+            createStatement.executeUpdate();
         } catch (SQLException ex){
             ex.printStackTrace();
-
         }
-
-
-
     }
 }
