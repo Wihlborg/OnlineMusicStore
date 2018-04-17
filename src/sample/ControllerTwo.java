@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,16 +23,9 @@ public void getNewAccount(javafx.event.ActionEvent event){
     String username=Account.getText();
     String password=Password.getText();
     String seq=securityq.getText();
-  db.addAccount(username,password);
+    db.addAccount(username,password);
 
 
-
-
-
-
-
-//Password password1=new Password();
-//password1.passwordEncryptor(accoount,password);
 }
 
     public void ChangeToLogin(javafx.event.ActionEvent event){

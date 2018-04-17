@@ -13,13 +13,14 @@ public class Password {
 
 
 
-    public  void passwordEncryptor(String Username, String Password){
+    public  String passwordEncryptor(String username, String password){
 
         try {
 
-            MessageDigest md = MessageDigest.getInstance(Password);
-            md.update(Password.getBytes());
-            byte[] bytes = md.digest();
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] salt = username.getBytes();
+            md.update(salt);
+            byte[] bytes = md.digest(password.getBytes());
 
             StringBuilder sb = new StringBuilder();
             for(int i=0; i< bytes.length ;i++)
@@ -33,7 +34,7 @@ public class Password {
         {
             e.printStackTrace();
         }
-System.out.println(generatedPassword);
+        return generatedPassword;
     }
 
 

@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class DatabaseManager {
     private static DatabaseManager instance = null;
+    Password pw = new Password();
     private String url;
     private Connection c;
     private Statement st;
@@ -30,7 +31,7 @@ public class DatabaseManager {
             checkStatement.setString(1, username);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
-                if (rs.getString("password").equals(password)){
+                if (rs.getString("password").equals(pw.passwordEncryptor(username, password))){
                     return true;
                 }
             }
@@ -46,8 +47,9 @@ public class DatabaseManager {
         try {
             PreparedStatement createStatement = c.prepareStatement("Insert into users (username, password) values (? , ?);");
             createStatement.setString(1, username);
-            createStatement.setString(2, password);
+            createStatement.setString(2, pw.passwordEncryptor(username, password));
             createStatement.executeUpdate();
+
         } catch (SQLException ex){
             ex.printStackTrace();
         }
