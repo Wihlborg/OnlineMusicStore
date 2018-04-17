@@ -16,7 +16,7 @@ public class ControllerTwo {
 @FXML TextField Password;
 @FXML TextField securityq;
 
-DatabaseManager db=new DatabaseManager();
+DatabaseManager db= DatabaseManager.getInstance();
 
 public void getNewAccount(javafx.event.ActionEvent event){
     String username=Account.getText();

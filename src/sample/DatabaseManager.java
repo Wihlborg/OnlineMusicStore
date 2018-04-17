@@ -3,10 +3,11 @@ package sample;
 import java.sql.*;
 
 public class DatabaseManager {
+    private static DatabaseManager instance = null;
     private String url;
     private Connection c;
     private Statement st;
-    public DatabaseManager() {
+    private DatabaseManager() {
         try {
             url = "jdbc:mysql://den1.mysql2.gear.host:3306/onlinemusicstore?user=onlinemusicstore&password=OnlineMusicStore!";
             c = DriverManager.getConnection(url);
@@ -14,6 +15,13 @@ public class DatabaseManager {
         } catch (SQLException ex){
             ex.printStackTrace();
         }
+    }
+
+    public static DatabaseManager getInstance(){
+        if (instance == null){
+            instance = new DatabaseManager();
+        }
+        return instance;
     }
 
     public boolean passwordCheck(String username, String password){ //TODO Hash and salt password
