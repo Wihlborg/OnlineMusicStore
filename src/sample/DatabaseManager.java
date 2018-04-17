@@ -25,7 +25,7 @@ public class DatabaseManager {
         return instance;
     }
 
-    public boolean passwordCheck(String username, String password){ //TODO Hash and salt password
+    public boolean passwordCheck(String username, String password){
         try {
             PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);
@@ -42,7 +42,7 @@ public class DatabaseManager {
         }
         return false;
     }
-    public void addAccount(String username,String password){ //TODO Hash and salt password
+    public void addAccount(String username,String password){
 
         try {
             PreparedStatement createStatement = c.prepareStatement("Insert into users (username, password) values (? , ?);");
