@@ -23,7 +23,7 @@ public class Controller {
 
 
 
-DatabaseManager db= DatabaseManager.getInstance();
+DatabaseManager db = DatabaseManager.getInstance();
 
     public void SigninAction(javafx.event.ActionEvent event){
 boolean password=db.passwordCheck(UserName.getText(),PassWord.getText());
