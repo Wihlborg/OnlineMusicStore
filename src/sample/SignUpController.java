@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,9 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.*;
 
-public class ControllerTwo {
+public class SignUpController {
 
 @FXML TextField Account;
 @FXML TextField Password;
@@ -30,7 +28,7 @@ public void getNewAccount(javafx.event.ActionEvent event){
         String seq = securityq.getText();
 
         db.addAccount(username, password);
-        ControllerTwo c2=new ControllerTwo();
+        SignUpController c2=new SignUpController();
         c2.ChangeToLogin(event);
     }
 
