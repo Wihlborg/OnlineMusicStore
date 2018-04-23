@@ -4,20 +4,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <children>
-      <TextArea layoutX="7.0" layoutY="23.0" prefHeight="372.0" prefWidth="146.0" />
+      <TextArea editable="false" layoutX="7.0" layoutY="23.0" prefHeight="372.0" prefWidth="146.0" />
       <Label layoutX="16.0" layoutY="6.0" prefHeight="17.0" prefWidth="128.0" text="Top Playlist of the week" />
       <TextField layoutX="397.0" layoutY="11.0" promptText="Search" />
       <Label layoutX="245.0" layoutY="11.0" prefHeight="25.0" prefWidth="64.0" text="WELCOME" />
       <Button layoutX="546.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="OK" />
-      <Button layoutX="362.0" layoutY="355.0" mnemonicParsing="false" text="Shop" />
-      <Button layoutX="522.0" layoutY="355.0" mnemonicParsing="false" text="Advanced Search" />
+      <Button layoutX="362.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToShopcart" text="Shop" />
+      <Button layoutX="522.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToAdvancedSearch" text="Advanced Search" />
       <Button layoutX="208.0" layoutY="355.0" mnemonicParsing="false" text="Ur Playlists" />
 
    </children>
