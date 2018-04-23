@@ -13,10 +13,24 @@ import java.util.Queue;
 
 public class ShoppingCart {
 
+    private static ShoppingCart instance = null;
+    private Queue<Song>songLinkedList;
+    private Queue<Album>albumLinkedList;
+
+    private ShoppingCart() {
+        songLinkedList = new LinkedList<>();
+        albumLinkedList = new LinkedList<>();
+
+    }
+
+    public static ShoppingCart getInstance() {
+        if (instance == null){
+            instance = new ShoppingCart();
+        }
+        return instance;
+    }
 
 
-   public Queue<Song>songLinkedList=new LinkedList<>();
-    public Queue<Album>albumLinkedList=new LinkedList<>();
 
     public void writetoTextArea(){
 
@@ -24,27 +38,8 @@ public class ShoppingCart {
 
   }
 
-    public void changeToMenu(javafx.event.ActionEvent event){
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-        } catch (NullPointerException ne){
-
-            ne.getSuppressed();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
     }
 
 
-}
+
