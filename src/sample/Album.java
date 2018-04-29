@@ -3,10 +3,12 @@ package sample;
 import java.util.ArrayList;
 
 public class Album {
-    public ArrayList songs;
+    private ArrayList<Song> songs;
+    private String albumName;
 
 
-    public Album(ArrayList<Song> songs) {
+    public Album(String albumName, ArrayList<Song> songs) {
+        this.albumName = albumName;
         this.songs = songs;
     }
 }

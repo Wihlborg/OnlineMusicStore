@@ -7,14 +7,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SearchController {
-
-
-
+    private ArrayList<Song> songs = new ArrayList<>();
+    private ArrayList<Album> albums = new ArrayList<>();
+    private DatabaseManager dm = DatabaseManager.getInstance();
 
     public void search(String search){
-
+        songs = dm.getSongs(search);
+        albums = dm.getAlbums(search);
     }
 
     public void addSongToCart(Song song){

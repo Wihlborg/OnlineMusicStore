@@ -1,6 +1,7 @@
 package sample;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseManager {
     private static DatabaseManager instance = null;
@@ -53,5 +54,45 @@ public class DatabaseManager {
         } catch (SQLException ex){
             ex.printStackTrace();
         }
+    }
+
+    public ArrayList<Song> getSongs(String searchTerm) {
+        ArrayList<Song> songs = new ArrayList<>();
+        try {
+            PreparedStatement songStatement = c.prepareStatement("SELECT songs.name, albums.name, artists.name" +
+                                                                      "FROM songs, albums, artists" +
+                                                                      "WHERE songs.albums_idalbums = albums.idalbums AND albums.artists_idartists = artists.idartists AND songs.name LIKE '%?%'");
+
+            songStatement.setString(1, searchTerm);
+
+            ResultSet rs = songStatement.executeQuery();
+
+            while (rs.next()){
+                songs.add(new Song(rs.getString("artists.name"), rs.getString("albums.name"), rs.getString("songs.name"), new int[]{0, 0}));
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return songs;
+    }
+
+    public ArrayList<Album> getAlbums(String searchTerm){
+        ArrayList<Album> albums = new ArrayList<>();
+        try {
+            PreparedStatement albumStatement = c.prepareStatement("SELECT albums.name" +
+                    " FROM albums" +
+                    " WHERE albums.name LIKE ?");
+            albumStatement.setString(1, searchTerm);
+
+            ResultSet rs = albumStatement.executeQuery();
+            while (rs.next()){
+                albums.add(new Album(rs.getString("albums.name"), new ArrayList<>()));
+            }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return albums;
     }
 }
