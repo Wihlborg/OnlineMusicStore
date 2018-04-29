@@ -12,9 +12,8 @@
       <Label layoutX="16.0" layoutY="6.0" prefHeight="17.0" prefWidth="128.0" text="Top Playlist of the week" />
       <TextField layoutX="397.0" layoutY="11.0" promptText="Search" />
       <Label layoutX="245.0" layoutY="11.0" prefHeight="25.0" prefWidth="64.0" text="WELCOME" />
-      <Button layoutX="546.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="OK" />
+      <Button layoutX="546.0" layoutY="11.0" mnemonicParsing="false" onAction="#changeToAdvancedSearch" prefHeight="25.0" prefWidth="56.0" text="OK" />
       <Button layoutX="362.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToShopcart" text="Shop" />
-      <Button layoutX="522.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToAdvancedSearch" text="Advanced Search" />
       <Button layoutX="208.0" layoutY="355.0" mnemonicParsing="false" text="Ur Playlists" />
 
    </children>
