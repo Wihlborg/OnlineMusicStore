@@ -15,6 +15,22 @@ public class Song {
         this.albumName = albumName;
     }
 
+<<<<<<< HEAD
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public int[] getLength() {
+        return length;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+=======
     @Override
     public String toString() {
         return "Song{" +
@@ -23,5 +39,6 @@ public class Song {
                 ", length=" + Arrays.toString(length) +
                 ", albumName='" + albumName + '\'' +
                 '}';
+>>>>>>> 7642677dc02bcf03925310055834a276cdfe2e2b
     }
 }
