@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Checkout">
+   <children>
+      <Label layoutX="228.0" layoutY="20.0" prefHeight="53.0" prefWidth="200.0" text="Checkout" textFill="RED">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="totalCost" layoutX="107.0" layoutY="338.0" />
+      <Label layoutX="14.0" layoutY="337.0" text="Total cost: ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="songsToBuy" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="28.0" layoutY="60.0" text="Songs to buy:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="421.0" layoutY="102.0" />
+      <Label layoutX="272.0" layoutY="99.0" text="Name:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="accountBalance" layoutX="421.0" layoutY="148.0" />
+      <Label layoutX="300.0" layoutY="145.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="145.0" text="Acount balance:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="payButtton" layoutX="428.0" layoutY="305.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="93.0" style="-fx-background-color: #0cff00;" text="Pay">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="302.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToShop" text="Back" />
+   </children>
+</AnchorPane>
