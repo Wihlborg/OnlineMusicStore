@@ -39,7 +39,6 @@ private TableView<Song> table;
 
 
 public void search(String search){
-<<<<<<< HEAD
         songs = FXCollections.observableArrayList(dm.getSongs(search));
         albums = dm.getAlbums(search);
         table.setItems(songs);
@@ -47,14 +46,7 @@ public void search(String search){
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
 }
-=======
 
-        songs = dm.getSongs(search);
-        albums = dm.getAlbums(search);
-
-
-    }
->>>>>>> 7642677dc02bcf03925310055834a276cdfe2e2b
 
     public void addSongToCart(Song song){
 
