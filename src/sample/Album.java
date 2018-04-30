@@ -11,4 +11,12 @@ public class Album {
         this.albumName = albumName;
         this.songs = songs;
     }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "songs=" + songs +
+                ", albumName='" + albumName + '\'' +
+                '}';
+    }
 }

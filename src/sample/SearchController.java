@@ -26,8 +26,10 @@ public class SearchController {
 
 
 public void search(String search){
+
         songs = dm.getSongs(search);
         albums = dm.getAlbums(search);
+
 
     }
 
