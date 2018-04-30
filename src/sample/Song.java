@@ -13,4 +13,19 @@ public class Song {
         this.albumName = albumName;
     }
 
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getSongName() {
+        return songName;
+    }
+
+    public int[] getLength() {
+        return length;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
 }
