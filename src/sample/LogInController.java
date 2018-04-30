@@ -25,6 +25,8 @@ public class LogInController {
 
 
 
+
+
 DatabaseManager db = DatabaseManager.getInstance();
 
     public void signInAction(javafx.event.ActionEvent event){

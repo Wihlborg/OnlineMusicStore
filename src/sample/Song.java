@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Arrays;
+
 public class Song {
     private String artistName;
     private String songName;
@@ -13,6 +15,7 @@ public class Song {
         this.albumName = albumName;
     }
 
+<<<<<<< HEAD
     public String getArtistName() {
         return artistName;
     }
@@ -27,5 +30,15 @@ public class Song {
 
     public String getAlbumName() {
         return albumName;
+=======
+    @Override
+    public String toString() {
+        return "Song{" +
+                "artistName='" + artistName + '\'' +
+                ", songName='" + songName + '\'' +
+                ", length=" + Arrays.toString(length) +
+                ", albumName='" + albumName + '\'' +
+                '}';
+>>>>>>> 7642677dc02bcf03925310055834a276cdfe2e2b
     }
 }
