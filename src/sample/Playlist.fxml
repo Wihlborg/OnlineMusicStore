@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Playlist">
+   <children>
+      <TableView layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <TableView layoutY="185.0" prefHeight="140.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="247.0" layoutY="6.0" text="Baught songs" />
+      <Label layoutX="247.0" layoutY="163.0" text="Ur Playlist" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Main Menu" />
+      <Button layoutX="534.0" layoutY="325.0" mnemonicParsing="false" text="Play" />
+      <Button layoutX="463.0" layoutY="325.0" mnemonicParsing="false" text="Download" />
+      <Button layoutX="411.0" layoutY="325.0" mnemonicParsing="false" text="Remove" />
+      <Button layoutX="373.0" layoutY="325.0" mnemonicParsing="false" text="Add" />
+   </children>
+</AnchorPane>
