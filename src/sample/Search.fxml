@@ -11,11 +11,11 @@
       <TextField fx:id="searchtextField" layoutX="132.0" layoutY="280.0" prefHeight="25.0" prefWidth="249.0" />
       <Button layoutX="539.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeToMenu" text="Menu" />
       <Button layoutX="432.0" layoutY="280.0" mnemonicParsing="false" onAction="#searchFunction" text="Ok" />
-      <TableView fx:id="table" layoutX="39.0" layoutY="21.0" prefHeight="200.0" prefWidth="532.0">
+      <TableView fx:id="table" layoutX="39.0" layoutY="21.0" prefHeight="200.0" prefWidth="540.0">
         <columns>
-          <TableColumn fx:id="columnSong" prefWidth="75.0" text="Song" />
-          <TableColumn fx:id="columnArtist" prefWidth="75.0" text="Artist" />
-            <TableColumn fx:id="columnAlbum" prefWidth="75.0" text="Album" />
+          <TableColumn fx:id="columnSong" prefWidth="180.0" text="Song" />
+          <TableColumn fx:id="columnArtist" prefWidth="180.0" text="Artist" />
+            <TableColumn fx:id="columnAlbum" prefWidth="180.0" text="Album" />
         </columns>
       </TableView>
    </children>
