@@ -18,18 +18,16 @@ public class ShoppingCart {
 
     @FXML
     private TableView<?> tableView;
-
-
     private static ShoppingCart instance = null;
-    //private Queue<Song>songLinkedList;
-    //private Queue<Album>albumLinkedList;
-    private String songname;
+    private Queue<Song>songLinkedList;
+    private Queue<Album>albumLinkedList;
+
+
+
 
     private ShoppingCart() {
-        //songLinkedList = new LinkedList<>();
-        //albumLinkedList = new LinkedList<>();
-           songname = new String();
-      addtolistView(songname);
+        songLinkedList = new LinkedList<>();
+        albumLinkedList = new LinkedList<>();
 
     }
 
@@ -43,6 +41,9 @@ public class ShoppingCart {
         return instance;
     }
 
+    public void addSong(Song song){
+        songLinkedList.add(song);
+    }
 public void addtolistView(String songinfo){
 
 

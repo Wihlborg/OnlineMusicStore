@@ -40,6 +40,8 @@ private TableView<Song> table;
     @FXML
     TableColumn<Song, String> columnAlbum;
 
+    ShoppingCart sc = ShoppingCart.getInstance();
+
 
 public void search(String search){
         songs = FXCollections.observableArrayList(dm.getSongs(search));
@@ -54,11 +56,7 @@ public void search(String search){
         row.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                 Song rowData = row.getItem();
-                System.out.println(rowData);
-                String info = rowData.toString();
-               
-
-
+                sc.addSong(rowData);
             }
         });
         return row ;
