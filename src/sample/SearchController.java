@@ -45,16 +45,11 @@ private TableView<Song> table;
 
 
     public void searchforsong(){
-            Stack<Character> st = new Stack<Character>();
+
     searchtextField.textProperty().addListener((obs, oldText, newText) -> {
-        String anwser;
 
 
-        anwser=searchtextField.getText();
-        for(int i=0;i<newText.length();i++){
-            st.push(anwser.charAt(i));
-               }
-search(anwser);
+search(newText);
     });
 }
 
