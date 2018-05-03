@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 
 public class SearchController{
@@ -43,6 +44,20 @@ private TableView<Song> table;
     ShoppingCart sc = ShoppingCart.getInstance();
 
 
+    public void searchforsong(){
+            Stack<Character> st = new Stack<Character>();
+    searchtextField.textProperty().addListener((obs, oldText, newText) -> {
+        String anwser;
+
+
+        anwser=searchtextField.getText();
+        for(int i=0;i<newText.length();i++){
+            st.push(anwser.charAt(i));
+               }
+search(anwser);
+    });
+}
+
 public void search(String search){
         songs = FXCollections.observableArrayList(dm.getSongs(search));
         albums = dm.getAlbums(search);
@@ -57,6 +72,7 @@ public void search(String search){
             if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                 Song rowData = row.getItem();
                 sc.addSong(rowData);
+                System.out.println(rowData);
             }
         });
         return row ;
@@ -87,16 +103,13 @@ public void search(String search){
 
         }
     }
-    @FXML
-    public void searchFunction(ActionEvent event){
 
-        String searchD = searchtextField.getText().toString();
-
-                search(searchD);
 
 
     }
 
 
 
-}
+
+
+
