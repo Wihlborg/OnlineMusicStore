@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlaylistController">
    <children>
       <TableView layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
@@ -28,4 +29,7 @@
       <Button layoutX="411.0" layoutY="325.0" mnemonicParsing="false" text="Remove" />
       <Button layoutX="373.0" layoutY="325.0" mnemonicParsing="false" text="Add" />
    </children>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
 </AnchorPane>
