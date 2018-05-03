@@ -9,10 +9,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.text.TabableView;
@@ -47,13 +49,25 @@ public void search(String search){
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
 
+    table.setRowFactory( tv -> {
+        TableRow<Song> row = new TableRow<>();
+        row.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                Song rowData = row.getItem();
+                System.out.println(rowData);
+                String info = rowData.toString();
+               
+
+
+            }
+        });
+        return row ;
+    });
 
 }
 
 
-    public void addSongToCart(Song song){
 
-    }
     public void changeToMenu(javafx.event.ActionEvent event){
         try {
             Node node = (Node) event.getSource();

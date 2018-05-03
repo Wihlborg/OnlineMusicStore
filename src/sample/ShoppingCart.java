@@ -21,30 +21,32 @@ public class ShoppingCart {
 
 
     private static ShoppingCart instance = null;
-    private Queue<Song>songLinkedList;
-    private Queue<Album>albumLinkedList;
+    //private Queue<Song>songLinkedList;
+    //private Queue<Album>albumLinkedList;
+    private String songname;
 
     private ShoppingCart() {
-        songLinkedList = new LinkedList<>();
-        albumLinkedList = new LinkedList<>();
+        //songLinkedList = new LinkedList<>();
+        //albumLinkedList = new LinkedList<>();
+           songname = new String();
+      addtolistView(songname);
 
     }
+
+
 
     public static ShoppingCart getInstance() {
         if (instance == null){
             instance = new ShoppingCart();
+
         }
         return instance;
     }
 
+public void addtolistView(String songinfo){
 
 
-    public void writetoTextArea(){
-
-
-
-  }
-
+}
 
 
 
