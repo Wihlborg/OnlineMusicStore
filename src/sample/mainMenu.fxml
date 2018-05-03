@@ -12,7 +12,7 @@
       <Label layoutX="245.0" layoutY="11.0" prefHeight="25.0" prefWidth="64.0" text="WELCOME" />
       <Button layoutX="523.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToAdvancedSearch" prefHeight="25.0" prefWidth="56.0" text="Search" />
       <Button layoutX="362.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToShopcart" text="Shop" />
-      <Button layoutX="208.0" layoutY="355.0" mnemonicParsing="false" text="Ur Playlists" />
+      <Button layoutX="208.0" layoutY="355.0" mnemonicParsing="false" onAction="#changetoPlaylist" text="Ur Playlists" />
 
    </children>
 </AnchorPane>
