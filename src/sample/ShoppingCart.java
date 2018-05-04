@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,18 +18,19 @@ import java.util.Queue;
 
 public class ShoppingCart {
 
-    @FXML
-    private TableView<?> tableView;
+
     private static ShoppingCart instance = null;
-    private Queue<Song>songLinkedList;
-    private Queue<Album>albumLinkedList;
+    private ObservableList<Song> songLinkedList;
+
+    private ObservableList<Album>albumLinkedList;
+
 
 
 
 
     private ShoppingCart() {
-        songLinkedList = new LinkedList<>();
-        albumLinkedList = new LinkedList<>();
+        songLinkedList =  FXCollections.observableArrayList();
+        albumLinkedList = FXCollections.observableArrayList();
 
     }
 
@@ -42,17 +45,18 @@ public class ShoppingCart {
     }
 
     public void addSong(Song song){
-        songLinkedList.add(song);
+    songLinkedList.add(song);
+}
+
+    public ObservableList<Song> getSongLinkedList() {
+        return songLinkedList;
     }
-public void addtolistView(String songinfo){
-
-
 }
 
 
 
 
-    }
+
 
 
 

@@ -11,71 +11,46 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javax.swing.text.TabableView;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Stack;
 
-
-public class SearchController{
-    private ObservableList<Song> songs;
-    private ArrayList<Album> albums;
-    private DatabaseManager dm = DatabaseManager.getInstance();
-
-
-@FXML  TextField searchtextField;
-@FXML
-private TableView<Song> table;
-@FXML
+public class ShoppingCartGui {
+    ShoppingCart fc = ShoppingCart.getInstance();
+    @FXML
+    private TableView<Song> table;
+    @FXML
     TableColumn<Song, String> columnSong;
     @FXML
     TableColumn<Song, String> columnArtist;
     @FXML
     TableColumn<Song, String> columnAlbum;
-
-    ShoppingCart sc = ShoppingCart.getInstance();
-
-
-    public void searchforsong(){
-
-    searchtextField.textProperty().addListener((obs, oldText, newText) -> {
-
-
-search(newText);
-    });
+    private ObservableList<Song> songs;
+@FXML
+public void confirm(ActionEvent event){
+    handlesongView();
 }
 
-public void search(String search){
-        songs = FXCollections.observableArrayList(dm.getSongs(search));
-        albums = dm.getAlbums(search);
+    public void handlesongView(){
+songs = fc.getSongLinkedList();
         table.setItems(songs);
         columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
 
-    table.setRowFactory( tv -> {
-        TableRow<Song> row = new TableRow<>();
-        row.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                Song rowData = row.getItem();
-                sc.addSong(rowData);
-                System.out.println(rowData);
-                            }
+        table.setRowFactory( tv -> {
+            TableRow<Song> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Song rowData = row.getItem();
+                    System.out.println(rowData);
+                }
+            });
+            return row ;
         });
-        return row ;
-    });
-
-}
-
-
+    }
 
     public void changeToMenu(javafx.event.ActionEvent event){
         try {
@@ -98,13 +73,27 @@ public void search(String search){
 
         }
     }
+    @FXML
+    void checkoutMenu(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Checkout.fxml"));
+            Parent root = loader.load();
 
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
+        } catch (NullPointerException ne) {
+
+            ne.getSuppressed();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
     }
 
-
-
-
-
-
+}
