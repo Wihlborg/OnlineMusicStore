@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
 import java.util.Stack;
 
 
-public class SearchController{
+public class SearchController implements Initializable{
     private ObservableList<Song> songs;
     private ArrayList<Album> albums;
     private DatabaseManager dm = DatabaseManager.getInstance();
@@ -44,35 +45,36 @@ private TableView<Song> table;
     ShoppingCart sc = ShoppingCart.getInstance();
 
 
-    public void searchforsong(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    searchtextField.textProperty().addListener((obs, oldText, newText) -> {
+        searchtextField.setOnKeyTyped(event -> {
+            searchtextField.requestFocus();
+            String searchValue = searchtextField.getText();
+            search(searchValue);
+        });
+
+        table.setRowFactory( tableView -> {
+            TableRow<Song> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Song rowData = row.getItem();
+                    sc.addSong(rowData);
+                    System.out.println(rowData);
+                }
+            });
+            return row ;
+        });
+    }
 
 
-search(newText);
-    });
-}
-
-public void search(String search){
+    public void search(String search){
         songs = FXCollections.observableArrayList(dm.getSongs(search));
         albums = dm.getAlbums(search);
         table.setItems(songs);
         columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
-
-    table.setRowFactory( tv -> {
-        TableRow<Song> row = new TableRow<>();
-        row.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                Song rowData = row.getItem();
-                sc.addSong(rowData);
-                System.out.println(rowData);
-                            }
-        });
-        return row ;
-    });
-
 }
 
 
@@ -101,7 +103,7 @@ public void search(String search){
 
 
 
-    }
+}
 
 
 
