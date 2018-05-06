@@ -3,6 +3,10 @@ package sample;
 import java.sql.*;
 import java.util.ArrayList;
 
+/*
+Singleton class to handle all database matters and SQL querys
+ */
+
 public class DatabaseManager {
     private static DatabaseManager instance = null;
     Password pw = new Password();

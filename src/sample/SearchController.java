@@ -58,14 +58,14 @@ private TableView<Song> table;
             TableRow<Song> row = new TableRow<>();
 
                 row.setOnMouseClicked(event -> {
-
+                    //This happens if the user doubleclicks a song
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 
                                 Song rowData = row.getItem();
                                 ObservableList scList = sc.getSongLinkedList();
                                 boolean songIsInList = false;
 
-                                //Go through shoppingcart to see if we alreade have the song
+                                //Go through shoppingcart to see if we already have the song
                                 for (int i = 0; i < scList.size(); i++){
                                     if (scList.get(i) == rowData){
                                         songIsInList = true;
@@ -86,8 +86,10 @@ private TableView<Song> table;
 
 
     public void search(String search){
-        songs = FXCollections.observableArrayList(dm.getSongs(search));
-        albums = dm.getAlbums(search);
+        songs = FXCollections.observableArrayList(dm.getSongs(search)); //call the DB to get an observablearraylist of songs
+        albums = dm.getAlbums(search); //TODO: a tableview with albums
+
+        //add the values into the tableview
         table.setItems(songs);
         columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));

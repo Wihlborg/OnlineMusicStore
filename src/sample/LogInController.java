@@ -30,13 +30,13 @@ public class LogInController {
 DatabaseManager db = DatabaseManager.getInstance();
 
     public void signInAction(javafx.event.ActionEvent event){
-        boolean password=db.passwordCheck(UserName.getText().trim() , PassWord.getText().trim());
-        if (password==true){
+        boolean password=db.passwordCheck(UserName.getText().trim() , PassWord.getText().trim()); //Get a boolean from the DB to check if password is correct for the username
+        if (password==true){ //if it is, go to main menu and save the current users data in a singleton class
             db.updateCurrentUser(UserName.getText().trim());
             LogInController l=new LogInController();
             l.changeToMainMenu(event);
         }
-        else if (password==false){
+        else if (password==false){ //else we show an error message
             Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Wrong username or password");
             wrongPasswordAlert.show();
             PassWord.clear();
