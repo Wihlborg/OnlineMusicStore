@@ -3,6 +3,12 @@ package sample;
 import java.sql.*;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+/*
+Singleton class to handle all database matters and SQL querys
+ */
+>>>>>>> ea7c603094e687f5388c0688842f58ac0462c6fc
 
 public class DatabaseManager {
     private static DatabaseManager instance = null;

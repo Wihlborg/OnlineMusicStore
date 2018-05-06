@@ -16,7 +16,7 @@ public class Password {
     public  String passwordEncryptor(String username, String password){
 
         try {
-
+            //Hash the password and salt it using the username
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] salt = username.getBytes();
             md.update(salt);
@@ -36,16 +36,6 @@ public class Password {
         }
         return generatedPassword;
     }
-
-
-
-
-
-
-
-
-
-
 }
 
 
