@@ -62,9 +62,20 @@ private TableView<Song> table;
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 
                                 Song rowData = row.getItem();
-                                sc.addSong(rowData);
+                                ObservableList scList = sc.getSongLinkedList();
+                                boolean songIsInList = false;
 
-                                     }
+                                //Go through shoppingcart to see if we alreade have the song
+                                for (int i = 0; i < scList.size(); i++){
+                                    if (scList.get(i) == rowData){
+                                        songIsInList = true;
+                                    }
+                                }
+                                //If it doesn't exist in the cart we add it, else nothing happens
+                                if (!songIsInList){
+                                    sc.addSong(rowData);
+                                }
+                }
 
 
 
