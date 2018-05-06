@@ -95,19 +95,21 @@ public class ShoppingCartGui implements Initializable{
 
         }
     }
-
+@FXML
     public void deleteAll(){
-        clearAll.setOnAction(e -> {
+
+            table.requestFocus();
             table.getItems().clear();
-        });
+
     }
 
-
+@FXML
     public void remove(){
-        deleteButton.setOnAction(e -> {
+
             Song selectedItem = table.getSelectionModel().getSelectedItem();
+            table.requestFocus();
             table.getItems().remove(selectedItem);
-        });
+
         }
 
     }
