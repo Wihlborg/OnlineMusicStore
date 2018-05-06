@@ -18,7 +18,7 @@
             <TableColumn fx:id="columnAlbum" prefWidth="180.0" text="C2" />
         </columns>
       </TableView>
-      <Button layoutX="518.0" layoutY="281.0" mnemonicParsing="false" onAction="#deleteAll" text="Clear All" />
+      <Button fx:id="clearAll" layoutX="518.0" layoutY="281.0" mnemonicParsing="false" onAction="#deleteAll" text="Clear All" />
    </children>
     <stylesheets>
         <URL value="@style.css" />
