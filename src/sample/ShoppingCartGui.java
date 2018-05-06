@@ -35,6 +35,7 @@ public class ShoppingCartGui implements Initializable{
     private ObservableList<Song> songs;
 @FXML private Button deleteButton;
 @FXML private Button clearAll;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         columnSong.setText("Song");
@@ -94,19 +95,20 @@ public class ShoppingCartGui implements Initializable{
 
         }
     }
-    @FXML
-    public void deleteAll(ActionEvent event){
+
+    public void deleteAll(){
         clearAll.setOnAction(e -> {
             table.getItems().clear();
         });
     }
-    
-    @FXML
-    public void remove(ActionEvent event){
+
+
+    public void remove(){
         deleteButton.setOnAction(e -> {
             Song selectedItem = table.getSelectionModel().getSelectedItem();
             table.getItems().remove(selectedItem);
         });
         }
+
     }
 
