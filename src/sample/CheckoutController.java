@@ -1,25 +1,26 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CheckoutController {
+public class CheckoutController implements Initializable{
 
     @FXML
     private TextField totalCost;
 
-    @FXML
-    private TextArea songsToBuy;
 
     @FXML
     private TextField name;
@@ -29,6 +30,20 @@ public class CheckoutController {
 
     @FXML
     private Button payButtton;
+
+    ShoppingCart fc = ShoppingCart.getInstance();
+    @FXML
+    private TableView<Song> table;
+    @FXML
+    TableColumn<Song, String> columnSong;
+    @FXML
+    TableColumn<Song, String> columnArtist;
+    @FXML
+    TableColumn<Song, String> columnAlbum;
+    private ObservableList<Song> songs;
+
+
+
 
     @FXML
     void switchToShop(ActionEvent event) {
@@ -57,4 +72,19 @@ public class CheckoutController {
 
 
         }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        columnSong.setText("Song");
+        columnAlbum.setText("Album");
+        columnArtist.setText("Artist");
+
+        songs=fc.getSongLinkedList();
+
+        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+        table.setItems(songs);
+
+    }
 }
