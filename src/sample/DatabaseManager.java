@@ -3,6 +3,7 @@ package sample;
 import java.sql.*;
 import java.util.ArrayList;
 
+
 public class DatabaseManager {
     private static DatabaseManager instance = null;
     Password pw = new Password();
@@ -10,6 +11,7 @@ public class DatabaseManager {
     private Connection c;
     private Statement st;
     private CurrentUser currentUser;
+
 
     private DatabaseManager() {
         try {
@@ -29,14 +31,17 @@ public class DatabaseManager {
     }
 
     public boolean passwordCheck(String username, String password){
+        ShoppingCart fc = ShoppingCart.getInstance();
         try {
             PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
                 if (rs.getString("password").equals(pw.passwordEncryptor(username, password))){
+
                     return true;
                 }
+                fc.createfile(username);
             }
 
         } catch (SQLException ex){

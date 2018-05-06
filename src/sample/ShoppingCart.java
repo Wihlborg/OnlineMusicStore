@@ -11,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -51,7 +54,31 @@ public class ShoppingCart {
     public ObservableList<Song> getSongLinkedList() {
         return songLinkedList;
     }
+    public void createfile
+            (String usernamn) {
+
+
+        File f = new File(usernamn+"_shoppingcart.ser");
+        if(f.exists() && !f.isDirectory()) {
+            try {
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(f));
+                this.instance= (ShoppingCart) objectInputStream.readObject();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
 
 
 

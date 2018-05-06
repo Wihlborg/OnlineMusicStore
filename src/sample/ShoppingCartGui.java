@@ -16,7 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
@@ -47,10 +47,8 @@ public class ShoppingCartGui implements Initializable{
         columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
-
-
-
     }
+
 
     public void changeToMenu(javafx.event.ActionEvent event){
         try {
@@ -75,6 +73,7 @@ public class ShoppingCartGui implements Initializable{
     }
     @FXML
     void checkoutMenu(ActionEvent event) {
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -94,6 +93,12 @@ public class ShoppingCartGui implements Initializable{
             e.printStackTrace();
 
         }
+
+
+
+
+
+
     }
 @FXML
     public void deleteAll(){
