@@ -2,7 +2,6 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +21,7 @@ import javax.swing.text.TabableView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Stack;
 
@@ -56,12 +56,18 @@ private TableView<Song> table;
 
         table.setRowFactory( tableView -> {
             TableRow<Song> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
+
+                row.setOnMouseClicked(event -> {
+
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Song rowData = row.getItem();
-                    sc.addSong(rowData);
-                    System.out.println(rowData);
-                }
+
+                                Song rowData = row.getItem();
+                                sc.addSong(rowData);
+
+                                     }
+
+
+
             });
             return row ;
         });

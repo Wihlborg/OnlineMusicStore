@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ShoppingCartGui implements Initializable{
@@ -31,9 +33,7 @@ public class ShoppingCartGui implements Initializable{
     @FXML
     TableColumn<Song, String> columnAlbum;
     private ObservableList<Song> songs;
-@FXML
-public void confirm(ActionEvent event){
-}
+@FXML private Button deleteButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,16 +47,8 @@ public void confirm(ActionEvent event){
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
 
-        table.setRowFactory( tv -> {
-            TableRow<Song> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Song rowData = row.getItem();
-                    System.out.println(rowData);
-                }
-            });
-            return row ;
-        });
+
+
     }
 
     public void changeToMenu(javafx.event.ActionEvent event){
@@ -102,6 +94,16 @@ public void confirm(ActionEvent event){
 
         }
     }
+    @FXML
+    public void deleteAll(ActionEvent event){
+        table.setItems(null);
+    }
+    @FXML
+    public void remove(ActionEvent event){
+        deleteButton.setOnAction(e -> {
+            Song selectedItem = table.getSelectionModel().getSelectedItem();
+            table.getItems().remove(selectedItem);
+        });
+        }
+    }
 
-
-}
