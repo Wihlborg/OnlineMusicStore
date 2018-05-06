@@ -9,6 +9,8 @@ public class DatabaseManager {
     private String url;
     private Connection c;
     private Statement st;
+    private CurrentUser currentUser;
+
     private DatabaseManager() {
         try {
             url = "jdbc:mysql://den1.mysql2.gear.host:3306/onlinemusicstore?user=onlinemusicstore&password=OnlineMusicStore!";
@@ -93,5 +95,26 @@ public class DatabaseManager {
             ex.printStackTrace();
         }
         return albums;
+    }
+
+    public void updateCurrentUser(String username){
+        currentUser = CurrentUser.getInstance();
+
+        try {
+            PreparedStatement getUserInfoStatement = c.prepareStatement("SELECT idusers, is_artist, is_admin  FROM users WHERE username = ?");
+            getUserInfoStatement.setString(1, username);
+
+            ResultSet rs = getUserInfoStatement.executeQuery();
+
+            while (rs.next()){
+                currentUser.setUserName(username);
+                currentUser.setUserId(rs.getInt("idusers"));
+                currentUser.setArtist(rs.getBoolean("is_artist"));
+                currentUser.setAdmin(rs.getBoolean("is_admin"));
+            }
+
+        } catch (SQLException sqlEx){
+            sqlEx.printStackTrace();
+        }
     }
 }

@@ -32,6 +32,7 @@ DatabaseManager db = DatabaseManager.getInstance();
     public void signInAction(javafx.event.ActionEvent event){
         boolean password=db.passwordCheck(UserName.getText().trim() , PassWord.getText().trim());
         if (password==true){
+            db.updateCurrentUser(UserName.getText().trim());
             LogInController l=new LogInController();
             l.changeToMainMenu(event);
         }
