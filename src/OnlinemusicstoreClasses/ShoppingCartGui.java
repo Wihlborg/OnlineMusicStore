@@ -1,6 +1,5 @@
-package sample;
+package OnlinemusicstoreClasses;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,15 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ShoppingCartGui implements Initializable{
@@ -55,7 +51,7 @@ public class ShoppingCartGui implements Initializable{
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
@@ -78,7 +74,7 @@ public class ShoppingCartGui implements Initializable{
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Checkout.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/Checkout.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

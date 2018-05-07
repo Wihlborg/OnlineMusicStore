@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,7 +54,7 @@ public class CheckoutController implements Initializable{
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ShoppingCart.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/ShoppingCart.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);

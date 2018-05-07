@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,7 +18,7 @@ public class PlaylistController {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

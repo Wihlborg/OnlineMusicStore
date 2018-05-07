@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +31,7 @@ public class LostPasswordScene {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("LostPasswordScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/LostPasswordScene.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

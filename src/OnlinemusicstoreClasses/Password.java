@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 
 import java.security.MessageDigest;
@@ -12,9 +12,7 @@ public class Password {
 
 
 
-
     public  String passwordEncryptor(String username, String password){
-
         try {
             //Hash the password and salt it using the username
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -27,13 +25,13 @@ public class Password {
             {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
-
             generatedPassword = sb.toString();
         }
         catch (NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
+
         return generatedPassword;
     }
 }

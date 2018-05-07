@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -21,7 +22,8 @@ public class LogInController {
 @FXML
     Button Signin;
 
-    @FXML TextField PassWord;
+    @FXML
+    TextField PassWord;
 
 
 
@@ -43,15 +45,13 @@ DatabaseManager db = DatabaseManager.getInstance();
         }
 
     }
-
+    @FXML
 public void changeToCreateNewUser(javafx.event.ActionEvent event){
     try {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sampleTwo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sampleTwo.fxml"));
         Parent root = loader.load();
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -65,12 +65,12 @@ public void changeToCreateNewUser(javafx.event.ActionEvent event){
 
     }
 }
-
+    @FXML
 public void changeToMainMenu(ActionEvent event){
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

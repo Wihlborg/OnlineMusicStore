@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import java.util.ArrayList;
 

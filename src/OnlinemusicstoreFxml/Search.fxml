@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.SearchController">
    <children>
       <TextField fx:id="searchtextField" layoutX="132.0" layoutY="280.0"  prefHeight="25.0" prefWidth="249.0" />
       <Button layoutX="539.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeToMenu" text="Menu" />
@@ -20,6 +20,6 @@
       </TableView>
    </children>
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@../OnlinemusicstoreClasses/style.css" />
     </stylesheets>
 </AnchorPane>
