@@ -25,7 +25,7 @@ public class LogInController {
 
 
 
-private boolean admin =false;
+
 
 DatabaseManager db = DatabaseManager.getInstance();
 
@@ -43,7 +43,7 @@ DatabaseManager db = DatabaseManager.getInstance();
         }
 
     }
-
+    @FXML
 public void changeToCreateNewUser(javafx.event.ActionEvent event){
     try {
         Node node = (Node) event.getSource();
@@ -63,7 +63,7 @@ public void changeToCreateNewUser(javafx.event.ActionEvent event){
 
     }
 }
-
+    @FXML
 public void changeToMainMenu(ActionEvent event){
         try {
             Node node = (Node) event.getSource();

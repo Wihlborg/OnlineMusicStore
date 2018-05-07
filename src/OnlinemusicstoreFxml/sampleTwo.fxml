@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.SignUpController">
    <children>
-      <Button layoutX="468.0" layoutY="322.0" mnemonicParsing="false" onAction="#ChangeToLogin" prefHeight="34.0" prefWidth="102.0" text="Back to Login" />
+      <Button layoutX="468.0" layoutY="322.0" mnemonicParsing="false" onAction="#changeToLogin" prefHeight="34.0" prefWidth="102.0" text="Back to Login" />
       <Button layoutX="108.0" layoutY="322.0" mnemonicParsing="false" onAction="#getNewAccount" prefHeight="34.0" prefWidth="77.0" text="Save User" />
       <TextField fx:id="Account" layoutX="108.0" layoutY="89.0" />
       <TextField fx:id="Password" layoutX="108.0" layoutY="146.0" />

@@ -38,17 +38,14 @@ public void getNewAccount(javafx.event.ActionEvent event){
     }
 
 }
-
+@FXML
     public void changeToLogin(javafx.event.ActionEvent event){
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
             Parent root = loader.load();
-
-
-
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -61,5 +58,6 @@ public void getNewAccount(javafx.event.ActionEvent event){
             e.printStackTrace();
 
         }
+        }
     }
-}
+
