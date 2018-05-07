@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <?import java.net.URL?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.MainMenuController">
    <children>
       <TextArea editable="false" layoutX="7.0" layoutY="23.0" prefHeight="372.0" prefWidth="146.0" />
       <Label layoutX="16.0" layoutY="6.0" prefHeight="17.0" prefWidth="128.0" text="Top Playlist of the week" />
@@ -17,6 +17,6 @@
 
    </children>
    <stylesheets>
-      <URL value="@style.css" />
+      <URL value="@../OnlinemusicstoreClasses/style.css" />
    </stylesheets>
 </AnchorPane>

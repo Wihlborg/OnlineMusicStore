@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,17 +13,12 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javax.swing.text.TabableView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 
 public class SearchController implements Initializable{
@@ -103,7 +98,7 @@ private TableView<Song> table;
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

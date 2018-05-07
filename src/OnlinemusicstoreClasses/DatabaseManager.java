@@ -1,14 +1,13 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-=======
+
 /*
 Singleton class to handle all database matters and SQL querys
  */
->>>>>>> ea7c603094e687f5388c0688842f58ac0462c6fc
+
 
 public class DatabaseManager {
     private static DatabaseManager instance = null;
@@ -37,17 +36,17 @@ public class DatabaseManager {
     }
 
     public boolean passwordCheck(String username, String password){
-        ShoppingCart fc = ShoppingCart.getInstance();
+CurrentUser fc = CurrentUser.getInstance();
         try {
             PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
                 if (rs.getString("password").equals(pw.passwordEncryptor(username, password))){
-
                     return true;
+
                 }
-                fc.createfile(username);
+
             }
 
         } catch (SQLException ex){

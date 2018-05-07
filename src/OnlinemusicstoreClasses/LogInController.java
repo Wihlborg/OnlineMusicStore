@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ public class LogInController {
 
 
 
-
+private boolean admin =false;
 
 DatabaseManager db = DatabaseManager.getInstance();
 
@@ -48,10 +48,8 @@ public void changeToCreateNewUser(javafx.event.ActionEvent event){
     try {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sampleTwo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sampleTwo.fxml"));
         Parent root = loader.load();
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -70,7 +68,7 @@ public void changeToMainMenu(ActionEvent event){
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

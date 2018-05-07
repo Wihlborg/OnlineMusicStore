@@ -7,7 +7,7 @@
 
 
 <?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.SignUpController">
    <children>
       <Button layoutX="468.0" layoutY="322.0" mnemonicParsing="false" onAction="#ChangeToLogin" prefHeight="34.0" prefWidth="102.0" text="Back to Login" />
       <Button layoutX="108.0" layoutY="322.0" mnemonicParsing="false" onAction="#getNewAccount" prefHeight="34.0" prefWidth="77.0" text="Save User" />
@@ -19,6 +19,6 @@
       <Label layoutX="108.0" layoutY="183.0" text="Security Question:" />
    </children>
    <stylesheets>
-      <URL value="@style.css" />
+      <URL value="@../OnlinemusicstoreClasses/style.css" />
    </stylesheets>
 </AnchorPane>

@@ -1,4 +1,4 @@
-package sample;
+package OnlinemusicstoreClasses;
 
 public class CurrentUser {
     private static CurrentUser currentUser = null;

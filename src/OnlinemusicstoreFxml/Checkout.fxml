@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CheckoutController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.CheckoutController">
    <children>
       <Label layoutX="228.0" layoutY="20.0" prefHeight="53.0" prefWidth="200.0" text="Checkout" textFill="RED">
          <font>
@@ -59,6 +59,6 @@
       </TableView>
    </children>
    <stylesheets>
-      <URL value="@style.css" />
+      <URL value="@../OnlinemusicstoreClasses/style.css" />
    </stylesheets>
 </AnchorPane>
