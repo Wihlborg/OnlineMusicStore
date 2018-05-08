@@ -11,7 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 
 public class LogInController {
@@ -78,6 +84,40 @@ public void changeToMainMenu(ActionEvent event){
             e.printStackTrace();
         }
 }
+@FXML
+public void lostPassword(ActionEvent event){
+    event.getSource();
+    String tooMail="random.gmail.com";
+    String fromMail="onlinemusicstorev1@gmail.com";
+    String password ="9x828x5w";
+    String subject="Lost Password";
+    String message="hejhopp";
+    String host = "smtp.gmail.com";
+    Properties props = new Properties();
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host",host);
+    props.put("mail.smtp.user",fromMail);
+    props.put("mail.smtp.password",password);
+    props.put("mail.smtp.port", "587");
+    props.put("mail.smtp.auth", "true");
+    Session session = Session.getInstance(props);
+    try {
+        Message message1 = new MimeMessage(session);
+        message1.setFrom(new InternetAddress(fromMail));
+        message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
+        message1.setSubject(subject);
+        message1.setText("Dear Customer,"
+                + "\n\n"+message);
+       Transport transport =session.getTransport("smtp");
+       transport.connect(host,fromMail,password);
+       transport.sendMessage(message1,message1.getAllRecipients());
+       transport.close();
+        System.out.println("Done");
 
+    } catch (MessagingException e) {
 
+    }
 }
+}
+
+
