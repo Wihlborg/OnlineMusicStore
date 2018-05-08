@@ -128,7 +128,7 @@ public class DatabaseManager {
         }
     }
 
-    public boolean passwordcheckEmail(String username) {
+    public boolean checkUsername(String username) {
         try {
             PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);

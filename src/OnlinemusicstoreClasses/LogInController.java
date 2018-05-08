@@ -87,7 +87,7 @@ public void changeToMainMenu(ActionEvent event){
 @FXML
 public void lostPassword(ActionEvent event,String username,String email,String sequrityQ){
 
-    boolean userName=db.passwordcheckEmail(username);
+    boolean userName=db.checkUsername(username);
     boolean seq=false;
 
         if (userName==true &&seq==true ){
