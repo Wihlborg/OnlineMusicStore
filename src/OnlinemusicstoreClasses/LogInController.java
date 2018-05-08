@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,8 +16,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.Random;
-import java.util.ResourceBundle;
 import java.util.UUID;
 
 
@@ -100,7 +97,7 @@ public void lostPassword(ActionEvent event,String username,String email,String s
         String subject="Lost Password";
         String newPassword=UUID.randomUUID().toString();
         //linka message så databasen uppdateras med nya passet.
-            db.changeusersPassword(username,newPassword);
+            db.changeUsersPassword(username,newPassword);
         String host = "smtp.gmail.com";
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
