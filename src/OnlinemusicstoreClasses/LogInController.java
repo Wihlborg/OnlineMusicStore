@@ -91,7 +91,7 @@ public void lostPassword(ActionEvent event){
     String fromMail="onlinemusicstorev1@gmail.com";
     String password ="9x828x5w";
     String subject="Lost Password";
-    String message="hejhopp";
+    String message="Password!!!";
     String host = "smtp.gmail.com";
     Properties props = new Properties();
     props.put("mail.smtp.starttls.enable", "true");
