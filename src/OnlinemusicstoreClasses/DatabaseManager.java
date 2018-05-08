@@ -130,7 +130,7 @@ public class DatabaseManager {
 
     public boolean checkUsername(String username) {
         try {
-            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username="+username+")");
+            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
@@ -149,8 +149,8 @@ public class DatabaseManager {
 }
     public void changeusersPassword(String username,String Password) {
         try {
-            PreparedStatement createStatement = c.prepareStatement("Update into users (password) where users = ("+username+")");
-            createStatement.setString(2,pw.passwordEncryptor(username,Password));
+            PreparedStatement createStatement = c.prepareStatement("Update into users (password) where username =  (?);");
+            createStatement.setString(1, pw.passwordEncryptor(username, Password));
             createStatement.executeUpdate();
 
 
