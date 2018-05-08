@@ -147,4 +147,19 @@ public class DatabaseManager {
         }
         return false;
 }
-}
+    public void changeusersPassword(String username,String Password) {
+        try {
+            PreparedStatement createStatement = c.prepareStatement("Update users into (username, password) values (? , ?);");
+            createStatement.setString(1, username);
+            createStatement.setString(2, Password);
+            createStatement.executeUpdate();
+
+
+
+
+            } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        }
+    }

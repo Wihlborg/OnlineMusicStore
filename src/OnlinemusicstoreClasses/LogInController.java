@@ -17,7 +17,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 
 public class LogInController {
@@ -96,7 +98,9 @@ public void lostPassword(ActionEvent event,String username,String email,String s
         String fromMail="onlinemusicstorev1@gmail.com";
         String password ="9x828x5w";
         String subject="Lost Password";
-        String message="Password!!!";
+        String newPassword=UUID.randomUUID().toString();
+        //linka message så databasen uppdateras med nya passet.
+            db.changeusersPassword(username,newPassword);
         String host = "smtp.gmail.com";
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
@@ -112,7 +116,7 @@ public void lostPassword(ActionEvent event,String username,String email,String s
             message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
             message1.setSubject(subject);
             message1.setText("Dear Customer,"
-                    + "\n\n"+message);
+                    + "\n\n"+newPassword);
             Transport transport =session.getTransport("smtp");
             transport.connect(host,fromMail,password);
             transport.sendMessage(message1,message1.getAllRecipients());
@@ -133,6 +137,7 @@ public void lostPassword(ActionEvent event,String username,String email,String s
         }
 
 }
+
 }
 
 
