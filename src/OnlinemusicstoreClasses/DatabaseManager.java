@@ -36,7 +36,7 @@ public class DatabaseManager {
     }
 
     public boolean passwordCheck(String username, String password){
-CurrentUser fc = CurrentUser.getInstance();
+
         try {
             PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
             checkStatement.setString(1, username);
@@ -127,4 +127,24 @@ CurrentUser fc = CurrentUser.getInstance();
             sqlEx.printStackTrace();
         }
     }
+
+    public boolean passwordcheckEmail(String username) {
+        try {
+            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
+            checkStatement.setString(1, username);
+            ResultSet rs = checkStatement.executeQuery();
+            while (rs.next()){
+                if (rs.getString("username").equals(username)){
+                    return true;
+
+                }
+
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+
+        }
+        return false;
+}
 }
