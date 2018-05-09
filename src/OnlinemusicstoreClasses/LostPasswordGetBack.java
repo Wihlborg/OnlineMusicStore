@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-/*
-public class LostPasswordGetBack {
+
+public class LostPasswordGetBack {}/*
+
+
 
 
     @FXML
@@ -28,11 +30,8 @@ public class LostPasswordGetBack {
             stage.setScene(scene);
 
         } catch (NullPointerException ne) {
-
             ne.getSuppressed();
-
-        } catch (IOException e) {
-
+            } catch (IOException e) {
             e.printStackTrace();
 
         }
@@ -58,8 +57,5 @@ public class LostPasswordGetBack {
 
 
 
-
-
-    }
 
 */
