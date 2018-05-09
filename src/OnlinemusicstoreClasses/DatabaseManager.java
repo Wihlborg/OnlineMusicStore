@@ -113,6 +113,23 @@ public class DatabaseManager {
         return albums;
     }
 
+    public ArrayList<User> getUsers(String searchTerm){
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            PreparedStatement userStatement = c.prepareStatement("SELECT * FROM users WHERE users.username LIKE ?");
+            userStatement.setString(1, "%" + searchTerm + "%");
+            ResultSet rs = userStatement.executeQuery();
+            while (rs.next()){
+                users.add(new User(rs.getInt("idusers"), rs.getString("username"), rs.getString("email"), rs.getString("securityanswer"), rs.getInt("is_admin"), rs.getInt("is_artist")));
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return users;
+    }
+
     public void updateCurrentUser(String username){
         currentUser = CurrentUser.getInstance();
 
