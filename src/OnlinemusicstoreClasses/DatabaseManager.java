@@ -191,4 +191,17 @@ public class DatabaseManager {
 
         }
 
+        //ADMIN METHODS START
+    public void banUser(int userId){
+
+    }
+
+    public void setAdmin(int userId){
+
+    }
+
+    public void setArtist(int userId){
+
+    }
+
     }
