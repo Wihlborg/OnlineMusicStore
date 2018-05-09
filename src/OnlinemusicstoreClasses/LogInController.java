@@ -83,9 +83,19 @@ public void changeToMainMenu(ActionEvent event){
             e.printStackTrace();
         }
 }
-
-
-
+@FXML
+    public void changeToLostPassword(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/LostPasswordScene.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }
 

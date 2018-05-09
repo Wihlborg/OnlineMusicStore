@@ -128,13 +128,17 @@ public class DatabaseManager {
         }
     }
 
-    public boolean checkUsername(String username) {
+    public boolean checkUsername(String username,String email,String seq) {
         try {
-            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
+            PreparedStatement checkStatement = c.prepareStatement("SELECT username,email,securityawnser " +
+                    "FROM users WHERE username= ? and email=? and securityanswer=?");
             checkStatement.setString(1, username);
+            checkStatement.setString(1,email);
+            checkStatement.setString(1,seq);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
-                if (rs.getString("username").equals(username)){
+                if (rs.getString("username").equals(username) && rs.getString("email").
+                        equals(email)&& rs.getString("sequrityanswer").equals(seq)){
                     return true;
                 }
 

@@ -33,52 +33,29 @@ DatabaseManager db=DatabaseManager.getInstance();
 
     @FXML
     public void OkLostpassword(ActionEvent event) {
-
-
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/LostPasswordScene.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-        } catch (NullPointerException ne) {
-
-            ne.getSuppressed();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-
         if (UserNameLostPassword.getText().isEmpty() || UserNameLostPassword.getText().isEmpty())  {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
         } else {
             String userNameLostPassword =UserNameLostPassword.getText();
             String emailLostPasswordText = emailLostPassword.getText();
+            String seq = sequrityQ.getText();
 
-
-
-
+            lostPassword(event,userNameLostPassword,emailLostPasswordText,seq);
         }
+
+
 
     }
     @FXML
     public void lostPassword(ActionEvent event,String username,String email,String sequrityQ){
 
-        boolean userName=db.checkUsername(username);
-        boolean seq=false;
+        boolean confimation=db.checkUsername(username,email,sequrityQ);
 
 
-
-        if (userName==true &&seq==true ){
+        if (confimation==true ){
             event.getSource();
-            String tooMail="tauriainenjimmie@gmail.com";
+            String tooMail=email;
             String fromMail="onlinemusicstorev1@gmail.com";
             String password ="9x828x5w";
             String subject="Lost Password";
@@ -111,15 +88,46 @@ DatabaseManager db=DatabaseManager.getInstance();
 
             }
         }
-        else if (userName==false){
-            Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Username Dont Exist");
-            wrongPasswordAlert.show();
-        }
-        else if (seq==false){
-            Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Sequrity Question Dont Match");
+        else if (confimation==false){
+            Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Wrong Input!");
             wrongPasswordAlert.show();
         }
 
+
     }
+    public void changeToCreateNewUser(javafx.event.ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sampleTwo.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+        } catch (NullPointerException ne){
+
+            ne.getSuppressed();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+    }
+    @FXML
+    public void changeToLogin(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
