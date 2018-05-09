@@ -130,15 +130,15 @@ public class DatabaseManager {
 
     public boolean checkUsername(String username,String email,String seq) {
         try {
-            PreparedStatement checkStatement = c.prepareStatement("SELECT username,email,securityawnser " +
-                    "FROM users WHERE username= ? and email=? and securityanswer=?");
+            PreparedStatement checkStatement = c.prepareStatement("SELECT username,email,securityanswer " +
+                    "FROM users WHERE username= ? and email= ? and securityanswer=?");
             checkStatement.setString(1, username);
-            checkStatement.setString(1,email);
-            checkStatement.setString(1,seq);
+            checkStatement.setString(2,email);
+            checkStatement.setString(3,seq);
             ResultSet rs = checkStatement.executeQuery();
             while (rs.next()){
                 if (rs.getString("username").equals(username) && rs.getString("email").
-                        equals(email)&& rs.getString("sequrityanswer").equals(seq)){
+                        equals(email)&& rs.getString("securityanswer").equals(seq)){
                     return true;
                 }
 
