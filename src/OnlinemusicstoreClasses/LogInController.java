@@ -154,6 +154,10 @@ public void lostPassword(ActionEvent event,String username,String email,String s
 
         }
     }
+    @FXML
+    public void helpButton(ActionEvent event){
+
+    }
 }
 
 
