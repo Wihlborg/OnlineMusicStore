@@ -13,6 +13,7 @@ public class MainMenuController {
 
     public void changeToShopcart(javafx.event.ActionEvent event){
         try {
+            System.out.println("Hello world");
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
