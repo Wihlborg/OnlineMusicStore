@@ -3,14 +3,12 @@ package OnlinemusicstoreClasses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ShoppingCart {
+public class ShoppingCart  {
 
 
     private static ShoppingCart instance = null;
     private ObservableList<Song> songLinkedList;
-
     private ObservableList<Album>albumLinkedList;
-
 
 
 
@@ -20,7 +18,6 @@ public class ShoppingCart {
         albumLinkedList = FXCollections.observableArrayList();
 
     }
-
 
 
     public static ShoppingCart getInstance() {
