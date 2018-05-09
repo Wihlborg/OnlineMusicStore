@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class LostPasswordGetBack {
+public class LostPasswordGetBack {}/*
 
 
 
@@ -58,4 +58,4 @@ public class LostPasswordGetBack {
 
 
 
-
+*/

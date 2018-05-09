@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LostPasswordScene {
-
+public class LostPasswordScene {}
+/*
 
     @FXML
     private TextField UserNameLostPassword;
@@ -63,3 +63,4 @@ public class LostPasswordScene {
     }
 }
 
+*/
