@@ -15,6 +15,7 @@ public class SignUpController {
 @FXML TextField Account;
 @FXML TextField Password;
 @FXML TextField securityq;
+@FXML TextField emailField;
 
 DatabaseManager db= DatabaseManager.getInstance();
 
@@ -31,8 +32,9 @@ public void getNewAccount(javafx.event.ActionEvent event){
         String username = Account.getText();
         String password = Password.getText();
         String seq = securityq.getText();
+        String email = emailField.getText();
 
-        db.addAccount(username, password);
+        db.addAccount(username, password, email, seq);
         SignUpController c2=new SignUpController();
         c2.changeToLogin(event);
     }

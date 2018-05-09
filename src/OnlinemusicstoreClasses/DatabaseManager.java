@@ -55,12 +55,14 @@ public class DatabaseManager {
         }
         return false;
     }
-    public void addAccount(String username,String password){
+    public void addAccount(String username,String password, String email, String securityanswer){
 
         try {
-            PreparedStatement createStatement = c.prepareStatement("Insert into users (username, password) values (? , ?);");
+            PreparedStatement createStatement = c.prepareStatement("Insert into users (username, password, email, securityanswer) values (? , ?, ?, ?);");
             createStatement.setString(1, username);
             createStatement.setString(2, pw.passwordEncryptor(username, password));
+            createStatement.setString(3, email);
+            createStatement.setString(4, securityanswer);
             createStatement.executeUpdate();
 
         } catch (SQLException ex){
