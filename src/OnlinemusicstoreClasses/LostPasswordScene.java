@@ -132,5 +132,16 @@ DatabaseManager db=DatabaseManager.getInstance();
     }
 
 
+    public void clearUserInput(ActionEvent event) {
+        UserNameLostPassword.clear();
+        emailLostPassword.clear();
+        sequrityQ.clear();
+
+
+
+
+    }
+
+
 }
 
