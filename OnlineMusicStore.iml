@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="NyaMessageSkiten" level="project" />
     <orderEntry type="library" name="OnlineMusicStore" level="project" />
+    <orderEntry type="library" name="resources" level="project" />
   </component>
 </module>

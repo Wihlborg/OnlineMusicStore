@@ -15,7 +15,7 @@
       <Label layoutX="152.0" layoutY="183.0" text="Password:" />
       <Button fx:id="Signin" layoutX="269.0" layoutY="279.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="38.0" prefWidth="65.0" text="Sign In" />
       <Button layoutX="153.0" layoutY="279.0" mnemonicParsing="false" onAction="#changeToCreateNewUser" prefHeight="38.0" prefWidth="65.0" text="Sign Up" />
-       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpButton" text="Help" />
+       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />
