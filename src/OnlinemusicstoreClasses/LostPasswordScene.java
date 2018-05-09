@@ -77,16 +77,19 @@ DatabaseManager db=DatabaseManager.getInstance();
                 message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
                 message1.setSubject(subject);
                 message1.setText("Dear Customer,"
-                        + "\n\n"+newPassword);
+                        + "\n\n"+"Ur new Password is: "+newPassword);
                 Transport transport =session.getTransport("smtp");
                 transport.connect(host,fromMail,password);
                 transport.sendMessage(message1,message1.getAllRecipients());
                 transport.close();
-                System.out.println("Done");
+
+                Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Check ur Email");
+                correctWorked.show();
 
             } catch (MessagingException e) {
 
             }
+
         }
         else if (confimation==false){
             Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Wrong Input!");
