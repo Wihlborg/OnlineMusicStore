@@ -19,7 +19,7 @@
         </columns>
       </TableView>
       <Button layoutX="381.0" layoutY="280.0" mnemonicParsing="false" onAction="#changetoShoppingCart" text="Shopping Cart" />
-       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpButtonPressed" text="Help" />
+       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false"  text="Help" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />

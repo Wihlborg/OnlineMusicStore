@@ -16,7 +16,7 @@
       <Label layoutX="108.0" layoutY="72.0" text="AccountName:" />
       <Label layoutX="108.0" layoutY="129.0" text="PassWord:" />
       <Label layoutX="108.0" layoutY="183.0" text="Security Question:" />
-      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpButtonPressed" text="Help" />
+      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false"  text="Help" />
    </children>
    <stylesheets>
       <URL value="@../OnlinemusicstoreClasses/style.css" />
