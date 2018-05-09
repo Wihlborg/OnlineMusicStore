@@ -136,7 +136,6 @@ public class DatabaseManager {
             while (rs.next()){
                 if (rs.getString("username").equals(username)){
                     return true;
-
                 }
 
             }
@@ -147,10 +146,11 @@ public class DatabaseManager {
         }
         return false;
 }
-    public void changeusersPassword(String username,String Password) {
+    public void changeUsersPassword(String username, String newPassword) {
         try {
-            PreparedStatement createStatement = c.prepareStatement("Update into users (password) where username =  (?);");
-            createStatement.setString(1, pw.passwordEncryptor(username, Password));
+            PreparedStatement createStatement = c.prepareStatement("UPDATE users SET password = ? WHERE username = ?;");
+            createStatement.setString(1, pw.passwordEncryptor(username, newPassword));
+            createStatement.setString(2, username);
             createStatement.executeUpdate();
 
 
