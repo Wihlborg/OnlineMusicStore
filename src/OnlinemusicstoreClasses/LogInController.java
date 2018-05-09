@@ -134,7 +134,26 @@ public void lostPassword(ActionEvent event,String username,String email,String s
         }
 
 }
+@FXML
+    public void changeToLostPassword(javafx.event.ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/LostPasswordScene.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
+        } catch (NullPointerException ne){
+
+            ne.getSuppressed();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+    }
 }
 
 

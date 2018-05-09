@@ -47,14 +47,15 @@ public class LostPasswordScene {
 
         }
 
-        if (UserNameLostPassword.getText().isEmpty() || UserNameLostPassword.getText().isEmpty()) {
+        if (UserNameLostPassword.getText().isEmpty() || UserNameLostPassword.getText().isEmpty())  {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
         } else {
             String userNameLostPassword =UserNameLostPassword.getText();
             String emailLostPasswordText = emailLostPassword.getText();
 
-            
+
+
 
         }
 
