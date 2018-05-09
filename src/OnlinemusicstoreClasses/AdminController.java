@@ -61,18 +61,21 @@ public class AdminController implements Initializable {
     private void banUser(){
         User chosenUser = usersTableView.getSelectionModel().getSelectedItem();
         db.banUser(chosenUser.getUserId());
+        searchForUsers();
     }
 
     @FXML
     private void setAdmin(){
         User chosenUser = usersTableView.getSelectionModel().getSelectedItem();
         db.setAdmin(chosenUser.getUserId());
+        searchForUsers();
     }
 
     @FXML
     private void setArtist(){
         User chosenUser = usersTableView.getSelectionModel().getSelectedItem();
         db.setArtist(chosenUser.getUserId());
+        searchForUsers();
     }
 
 

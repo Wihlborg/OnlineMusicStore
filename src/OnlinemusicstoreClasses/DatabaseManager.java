@@ -193,15 +193,56 @@ public class DatabaseManager {
 
         //ADMIN METHODS START
     public void banUser(int userId){
+        try{
+            PreparedStatement banStatement = c.prepareStatement("DELETE FROM users WHERE idusers = ?");
+            banStatement.setInt(1, userId);
+            banStatement.executeUpdate();
+        } catch (SQLException ex){
 
+        }
     }
 
     public void setAdmin(int userId){
+        try {
+            PreparedStatement setAdminStatement = c.prepareStatement("UPDATE users SET is_admin = ? WHERE idusers = ?");
+            setAdminStatement.setInt(2, userId);
+            //Check if the user is admin. If TRUE, set FALSE, and vice versa.
+            PreparedStatement getAdminStatement = c.prepareStatement("SELECT is_admin FROM users WHERE idusers = ?");
+            getAdminStatement.setInt(1, userId);
+            ResultSet rs = getAdminStatement.executeQuery();
+            while (rs.next()){
+                if (rs.getBoolean("is_admin")){
+                    setAdminStatement.setBoolean(1, false);
+                } else {
+                    setAdminStatement.setBoolean(1, true);
+                }
+            }
+            setAdminStatement.executeUpdate();
 
+        } catch (SQLException ex){
+
+        }
     }
 
     public void setArtist(int userId){
+        try {
+            PreparedStatement setArtistStatement = c.prepareStatement("UPDATE users SET is_artist = ? WHERE idusers = ?");
+            setArtistStatement.setInt(2, userId);
+            //Check if the user is already artist. If FALSE, set to TRUE and vice versa.
+            PreparedStatement getArtistStatement = c.prepareStatement("SELECT is_artist FROM users WHERE idusers = ?");
+            getArtistStatement.setInt(1, userId);
+            ResultSet rs = getArtistStatement.executeQuery();
+            while (rs.next()){
+                if (rs.getBoolean("is_artist")){
+                    setArtistStatement.setBoolean(1, false);
+                } else {
+                    setArtistStatement.setBoolean(1, true);
+                }
+            }
+            setArtistStatement.executeUpdate();
 
-    }
+        } catch (SQLException ex){
 
+        }
     }
+}
