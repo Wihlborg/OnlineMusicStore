@@ -28,6 +28,7 @@ public class ShoppingCartGui implements Initializable{
     TableColumn<Song, String> columnArtist;
     @FXML
     TableColumn<Song, String> columnAlbum;
+    @FXML TableColumn<Song,Double>columnPrice;
     private ObservableList<Song> songs;
 @FXML private Button deleteButton;
 @FXML private Button clearAll;
@@ -37,13 +38,17 @@ public class ShoppingCartGui implements Initializable{
         columnSong.setText("Song");
         columnAlbum.setText("Album");
         columnArtist.setText("Artist");
+        columnPrice.setText("Price");
+
 
         songs = fc.getSongLinkedList();
         table.setItems(songs);
         columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
         columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+        columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("songPrice"));
     }
+
 
 
     public void changeToMenu(javafx.event.ActionEvent event){

@@ -40,6 +40,7 @@ public class CheckoutController implements Initializable{
     TableColumn<Song, String> columnArtist;
     @FXML
     TableColumn<Song, String> columnAlbum;
+    @FXML TableColumn<Song,Double> columnPrice;
     private ObservableList<Song> songs;
 
     @FXML
@@ -83,13 +84,16 @@ public class CheckoutController implements Initializable{
         columnSong.setText("Song");
         columnAlbum.setText("Album");
         columnArtist.setText("Artist");
+        columnPrice.setText("Price");
 
         songs=fc.getSongLinkedList();
 
-        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
-        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("SongName"));
+        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("ArtistName"));
+        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("AlbumName"));
+        columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("songPrice"));
         table.setItems(songs);
+
 
     }
 }

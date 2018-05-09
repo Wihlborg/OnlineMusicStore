@@ -37,6 +37,7 @@ private TableView<Song> table;
     TableColumn<Song, String> columnArtist;
     @FXML
     TableColumn<Song, String> columnAlbum;
+    @FXML TableColumn<Song,Double> columnPrice;
 
     ShoppingCart sc = ShoppingCart.getInstance();
 
@@ -87,10 +88,11 @@ private TableView<Song> table;
 
         //add the values into the tableview
         table.setItems(songs);
-        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
-        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
-}
+        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("AlbumName"));
+        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("ArtistName"));
+        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("SongPrice"));
+    }
 
 
 

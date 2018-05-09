@@ -7,12 +7,18 @@ public class Song {
     private String songName;
     private int[] length = new int[2];
     private String albumName;
+    private double songPrice;
 
-    public Song(String artistName,  String albumName, String songName, int[] length) {
+    public Song(String artistName, String songName,  String albumName,int[] length, double songPrice) {
         this.artistName = artistName;
         this.songName = songName;
         this.length = length;
         this.albumName = albumName;
+        this.songPrice = songPrice;
+    }
+
+    public double getSongPrice() {
+        return songPrice;
     }
 
     public String getArtistName() {

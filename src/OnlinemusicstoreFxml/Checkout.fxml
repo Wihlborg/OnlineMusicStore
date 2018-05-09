@@ -50,14 +50,15 @@
          </font>
       </Button>
       <Button layoutX="302.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchToShop" text="Back" />
-      <TableView fx:id="table" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="316.0">
+      <TableView fx:id="table" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0">
         <columns>
           <TableColumn fx:id="columnSong" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="columnArtist" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="columnAlbum" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="columnAlbum" prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="columnArtist" prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="columnPrice" prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false"  text="Help" />
+      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
    </children>
    <stylesheets>
       <URL value="@../OnlinemusicstoreClasses/style.css" />

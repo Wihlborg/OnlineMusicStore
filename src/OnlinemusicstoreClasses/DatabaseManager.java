@@ -71,7 +71,10 @@ public class DatabaseManager {
     public ArrayList<Song> getSongs(String searchTerm) {
         ArrayList<Song> songs = new ArrayList<>();
         try {
-            PreparedStatement songStatement = c.prepareStatement("SELECT songs.name, albums.name, artists.name FROM songs, albums, artists WHERE songs.name LIKE ? && songs.albums_idalbums = albums.idalbums && albums.artists_idartists = artists.idartists");
+            PreparedStatement songStatement = c.prepareStatement("SELECT songs.name, albums.name, artists.name , songs.price FROM songs, albums, " +
+                    "artists WHERE songs.name LIKE ? " +
+                    "&& songs.albums_idalbums = albums.idalbums " +
+                    "&& albums.artists_idartists = artists.idartists");
 
 
                     songStatement.setString(1, "%" + searchTerm + "%");
@@ -79,7 +82,10 @@ public class DatabaseManager {
             ResultSet rs = songStatement.executeQuery();
 
             while (rs.next()){
-                songs.add(new Song(rs.getString("artists.name"), rs.getString("albums.name"), rs.getString("songs.name"), new int[]{0, 0}));
+                songs.add(new Song(rs.getString("artists.name"),
+                        rs.getString("albums.name"),
+                        rs.getString("songs.name"),
+                        new int[]{0, 0},rs.getDouble("songs.price")));
             }
 
 
