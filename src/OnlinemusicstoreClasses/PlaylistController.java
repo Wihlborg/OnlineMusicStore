@@ -1,5 +1,7 @@
 package OnlinemusicstoreClasses;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -33,5 +35,9 @@ public class PlaylistController {
             e.printStackTrace();
 
         }
+    }
+    @FXML
+    void helpButtonPressed(ActionEvent event) {
+
     }
 }

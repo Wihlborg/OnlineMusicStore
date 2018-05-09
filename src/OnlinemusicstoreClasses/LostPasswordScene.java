@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-/*
+
 public class LostPasswordScene {
 
 
@@ -51,16 +51,15 @@ public class LostPasswordScene {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
         } else {
-            String username = UserNameLostPassword.getText();
-            String password = emailLostPassword.getText();
+            String UserNameLostPassword = UserNameLostPassword.getText();
+            String emailLostPasswordText = emailLostPassword.getText();
 
 
-            LostPasswordScene. (username, password);
-            SignUpController c2 = new SignUpController();
-            c2.changeToLogin(event);
+            LostPasswordScene. (UserNameLostPassword, emailLostPasswordText);
+            LostPasswordScene lp = new LostPasswordScene();
+            lp.changeToLogin(event);
         }
 
     }
-
-*/
+}
 

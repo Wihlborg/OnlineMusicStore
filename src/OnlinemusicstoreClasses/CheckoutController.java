@@ -42,6 +42,11 @@ public class CheckoutController implements Initializable{
     TableColumn<Song, String> columnAlbum;
     private ObservableList<Song> songs;
 
+    @FXML
+    void helpButtonPressed(ActionEvent event) {
+
+    }
+
 
 
 
