@@ -21,10 +21,10 @@ public class LostPasswordScene {
 
     @FXML
     private TextField emailLostPassword;
-
+@FXML TextField sequrityQ;
 
     @FXML
-    void OkLostpassword(ActionEvent event) {
+    public void OkLostpassword(ActionEvent event) {
 
 
         try {
@@ -47,17 +47,16 @@ public class LostPasswordScene {
 
         }
 
-        if (UserNameLostPassword.getText().isEmpty() || UserNameLostPassword.getText().isEmpty()) {
+        if (UserNameLostPassword.getText().isEmpty() || UserNameLostPassword.getText().isEmpty())  {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
         } else {
-            String UserNameLostPassword = UserNameLostPassword.getText();
+            String userNameLostPassword =UserNameLostPassword.getText();
             String emailLostPasswordText = emailLostPassword.getText();
 
 
-            LostPasswordScene. (UserNameLostPassword, emailLostPasswordText);
-            LostPasswordScene lp = new LostPasswordScene();
-            lp.changeToLogin(event);
+
+
         }
 
     }
