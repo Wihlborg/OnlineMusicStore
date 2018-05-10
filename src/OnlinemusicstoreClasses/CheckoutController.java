@@ -19,10 +19,10 @@ import java.util.ResourceBundle;
 public class CheckoutController implements Initializable{
 
     @FXML
-     TextField names;
+     TextField nameField;
 
     @FXML
-     TextField lastname;
+     TextField lastnameField;
 
     @FXML
      TextField creditcardnr1;
@@ -35,7 +35,7 @@ public class CheckoutController implements Initializable{
     @FXML
      TextField cvc;
     @FXML
-     TextField totalamount;
+     TextField totalAmount;
 
 
 
@@ -105,19 +105,28 @@ public class CheckoutController implements Initializable{
         columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("songPrice"));
         table.setItems(songs);
 
+        calculateCost();
+    }
+    public void boughtItems(){
+
+
+        String name = nameField.getText();
+        String lastname = lastnameField.getText();
+        int creditnbr1 = Integer.parseInt(creditcardnr1.getText());
+        int creditnbr2 = Integer.parseInt(creditcardnr2.getText());
+        int creditnbr3 = Integer.parseInt(creditcardnr3.getText());
+        int dates = Integer.parseInt(date.getText());
+        int cvcnbr = Integer.parseInt(cvc.getText());
+        double amountPrice = Double.parseDouble(totalAmount.getText());
 
     }
-    public void baughtItems(){
 
+    public void calculateCost(){
 
-        String name=names.getText();
-        String lastna=lastname.getText();
-        int creditnbr1= Integer.parseInt(creditcardnr1.getText());
-        int creditnbr2=Integer.parseInt(creditcardnr2.getText());
-        int creditnbr3=Integer.parseInt(creditcardnr3.getText());
-        int dates=Integer.parseInt(date.getText());
-        int cvcnbr=Integer.parseInt(cvc.getText());
-        double amountPrice=Integer.parseInt(totalamount.getText());
-
+            double total = 0 ;
+            for (Song song : table.getItems()) {
+                total += song.getSongPrice() ;
+            }
+            totalAmount.setText(String.valueOf(total));
     }
 }

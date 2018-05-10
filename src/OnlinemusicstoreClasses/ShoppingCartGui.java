@@ -143,13 +143,7 @@ updateTotalCost();
             double total = 0 ;
             for (Song song : table.getItems()) {
                 total = total +song.getSongPrice() ;
-                totalCost.setText(String.valueOf(total));
             }
-
-
-
-
-
-
+            totalCost.setText(String.valueOf(total));
         }
 }
