@@ -25,13 +25,27 @@
       <Label layoutX="33.0" layoutY="45.0" prefHeight="42.0" prefWidth="41.0" text="Artist" />
       <ChoiceBox fx:id="albumChoiceBox" layoutX="88.0" layoutY="87.0" prefWidth="150.0" />
       <Label layoutX="33.0" layoutY="79.0" prefHeight="42.0" prefWidth="41.0" text="Album" />
-      <Button layoutX="269.0" layoutY="87.0" mnemonicParsing="false" onAction="#addNewAlbum" text="Add new album" />
-      <Button layoutX="269.0" layoutY="54.0" mnemonicParsing="false" onAction="#addNewArtist" prefHeight="25.0" prefWidth="100.0" text="Add new artist" />
+      <Button layoutX="263.0" layoutY="279.0" mnemonicParsing="false" onAction="#addNewAlbum" text="Add new album" />
+      <Button layoutX="449.0" layoutY="279.0" mnemonicParsing="false" onAction="#addNewArtist" prefHeight="25.0" prefWidth="100.0" text="Add new artist" />
       <Label layoutX="74.0" layoutY="146.0" prefHeight="25.0" prefWidth="68.0" text="SongName" />
       <Label layoutX="74.0" layoutY="212.0" prefHeight="10.0" prefWidth="41.0" text="Price" />
       <TextField fx:id="songNameTextField" layoutX="74.0" layoutY="175.0" />
       <TextField fx:id="priceField" layoutX="74.0" layoutY="235.0" />
       <Button layoutX="74.0" layoutY="279.0" mnemonicParsing="false" onAction="#addNewSong" text="Add new song" />
+      <TextField fx:id="albumTextField" layoutX="263.0" layoutY="175.0" />
+      <TextField fx:id="artistTextField" layoutX="449.0" layoutY="175.0" />
+      <TextField fx:id="albumPriceField" layoutX="263.0" layoutY="235.0" />
+      <Label layoutX="449.0" layoutY="146.0" prefHeight="25.0" prefWidth="68.0" text="ArtistName" />
+      <Label layoutX="263.0" layoutY="146.0" prefHeight="25.0" prefWidth="68.0" text="AlbumName" />
+      <Label layoutX="267.0" layoutY="212.0" prefHeight="10.0" prefWidth="41.0" text="Price" />
+      <Label fx:id="informationLabel" layoutX="189.0" layoutY="353.0" prefHeight="30.0" prefWidth="414.0" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
 
     </children>
     <stylesheets>

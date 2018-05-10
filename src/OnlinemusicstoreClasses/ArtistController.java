@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,20 +20,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ArtistController implements Initializable{
-    @FXML
-    ChoiceBox<Artist> artistChoiceBox;
-    @FXML
-    ChoiceBox<Album> albumChoiceBox;
-    @FXML
-    TextField songNameTextField;
-    @FXML
-    TextField priceField;
+    @FXML ChoiceBox<Artist> artistChoiceBox;
+    @FXML ChoiceBox<Album> albumChoiceBox;
+    @FXML TextField songNameTextField;
+    @FXML TextField priceField;
+    @FXML TextField albumTextField;
+    @FXML TextField albumPriceField;
+    @FXML TextField artistTextField;
+    @FXML Label informationLabel;
 
 
     CurrentUser cu = CurrentUser.getInstance();
     DatabaseManager db = DatabaseManager.getInstance();
     ObservableList<Artist> artists;
     ObservableList<Album> albums;
+
+    Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Fields must not be empty");
+    Alert wrongFormatAlert = new Alert(Alert.AlertType.ERROR, "Price must be a numerical value");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,27 +45,65 @@ public class ArtistController implements Initializable{
     }
 
     @FXML
-    public void addNewAlbum(){}
-
-    @FXML
-    public void addNewArtist(){}
-
-    @FXML
-    public void addNewSong(){
-        if (songNameTextField.getText().trim().isEmpty() || priceField.getText().trim().isEmpty()){
-            Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Fields must not be empty");
+    public void addNewArtist(){
+        if (artistTextField.getText().trim().isEmpty()){
             emptyAlert.show();
+            clearAll();
             return;
         }
+        String artistName = artistTextField.getText();
+        int userId = cu.getUserId();
+        db.addArtist(artistName, userId);
+        clearAll();
+        informationLabel.setText("Artist added successfully!");
+        updateArtistBox();
+    }
 
-        String name;
+    @FXML
+    public void addNewAlbum(){
+        if (albumTextField.getText().trim().isEmpty() || albumPriceField.getText().trim().isEmpty() || artistChoiceBox.getValue() == null){
+            emptyAlert.show();
+            clearAll();
+            return;
+        }
+        Artist artist = artistChoiceBox.getValue();
+        String albumName = albumTextField.getText();
         double price;
         try {
             price = Double.parseDouble(priceField.getText());
         } catch (NumberFormatException ex){
-            Alert wrongFormatAlert = new Alert(Alert.AlertType.ERROR, "Price must be a numerical value");
             wrongFormatAlert.show();
+            clearAll();
+            return;
         }
+
+        db.addAlbum(albumName, artist.getArtistId(), price);
+
+    }
+
+
+
+    @FXML
+    public void addNewSong(){
+        if (songNameTextField.getText().trim().isEmpty() || priceField.getText().trim().isEmpty() || artistChoiceBox.getValue() == null || albumChoiceBox.getValue() == null){
+            emptyAlert.show();
+            clearAll();
+            return;
+        }
+        Album album = albumChoiceBox.getValue();
+        String name = songNameTextField.getText();
+        double price;
+        try {
+            price = Double.parseDouble(priceField.getText());
+        } catch (NumberFormatException ex){
+            wrongFormatAlert.show();
+            clearAll();
+            return;
+        }
+
+        db.addSong(name, album.getAlbumId(), price);
+        clearAll();
+        informationLabel.setText("Song successfully added!");
     }
 
     @FXML
@@ -98,5 +140,14 @@ public class ArtistController implements Initializable{
         Artist chosenArtist = artistChoiceBox.getValue();
         albums = FXCollections.observableArrayList(db.getArtistsAlbums(chosenArtist.getArtistId()));
         albumChoiceBox.getItems().addAll(albums);
+    }
+
+    public void clearAll(){
+        songNameTextField.clear();
+        priceField.clear();
+        albumTextField.clear();
+        albumPriceField.clear();
+        artistTextField.clear();
+        informationLabel.setText("");
     }
 }

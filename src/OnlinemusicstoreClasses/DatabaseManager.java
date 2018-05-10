@@ -11,7 +11,7 @@ Singleton class to handle all database matters and SQL querys
  */
 
 
-public class DatabaseManager {
+public class DatabaseManager{
     private static DatabaseManager instance = null;
     Password pw = new Password();
     private String url;
@@ -75,8 +75,8 @@ public class DatabaseManager {
     public ArrayList<Song> getSongs(String searchTerm) {
         ArrayList<Song> songs = new ArrayList<>();
         try {
-            PreparedStatement songStatement = c.prepareStatement("SELECT songs.name, albums.name, artists.name , songs.price FROM songs, albums, " +
-                    "artists WHERE songs.name LIKE ? " +
+            PreparedStatement songStatement = c.prepareStatement("SELECT songs.songname, albums.name, artists.name , songs.price FROM songs, albums, " +
+                    "artists WHERE songs.songname LIKE ? " +
                     "&& songs.albums_idalbums = albums.idalbums " +
                     "&& albums.artists_idartists = artists.idartists");
 
@@ -87,7 +87,7 @@ public class DatabaseManager {
 
             while (rs.next()){
                 songs.add(new Song(rs.getString("artists.name"),
-                        rs.getString("songs.name"),
+                        rs.getString("songs.songname"),
                         rs.getString("albums.name"),
                         new int[]{0, 0},
                         rs.getDouble("songs.price")));
@@ -103,14 +103,14 @@ public class DatabaseManager {
     public ArrayList<Album> getAlbums(String searchTerm){
         ArrayList<Album> albums = new ArrayList<>();
         try {
-            PreparedStatement albumStatement = c.prepareStatement("SELECT albums.name" +
+            PreparedStatement albumStatement = c.prepareStatement("SELECT *" +
                     " FROM albums" +
                     " WHERE albums.name LIKE ?");
             albumStatement.setString(1, "%" + searchTerm + "%");
 
             ResultSet rs = albumStatement.executeQuery();
             while (rs.next()){
-                albums.add(new Album(rs.getString("albums.name")));
+                albums.add(new Album(rs.getString("albums.name"),  rs.getInt("albums.idalbums")));
             }
         } catch (SQLException ex){
             ex.printStackTrace();
@@ -218,12 +218,45 @@ public class DatabaseManager {
             aaStatement.setInt(1, userId);
             ResultSet rs = aaStatement.executeQuery();
             while (rs.next()){
-                albums.add(new Album(rs.getString("name")));
+                albums.add(new Album(rs.getString("name"), rs.getInt("idalbums")));
             }
         } catch (SQLException ex){
             ex.printStackTrace();
         }
         return albums;
+    }
+
+    public void addArtist(String name, int userId){
+        try {
+            PreparedStatement addArtistStatement = c.prepareStatement("INSERT INTO artists (name, users_idusers) VALUES (?, ?)");
+            addArtistStatement.setString(1, name);
+            addArtistStatement.setInt(2, userId);
+            addArtistStatement.executeUpdate();
+        } catch (SQLException ex){ ex.printStackTrace();}
+    }
+
+    public void addAlbum(String albumName, int artistId, double albumPrice){
+        try {
+            PreparedStatement addSongStatement = c.prepareStatement("INSERT INTO albums (name, artists_idartists, price) VALUES (?, ? ,?)");
+            addSongStatement.setString(1, albumName);
+            addSongStatement.setInt(2, artistId);
+            addSongStatement.setDouble(3, albumPrice);
+            addSongStatement.executeUpdate();
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void addSong(String songName, int albumId, double songPrice){
+        try {
+            PreparedStatement addSongStatement = c.prepareStatement("INSERT INTO songs (songname, albums_idalbums, price) VALUES (?, ? ,?)");
+            addSongStatement.setString(1, songName);
+            addSongStatement.setInt(2, albumId);
+            addSongStatement.setDouble(3, songPrice);
+            addSongStatement.executeUpdate();
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
     }
 
         //ARTIST METHODS END

@@ -5,11 +5,19 @@ import java.util.ArrayList;
 public class Album {
     private ArrayList<Song> songs;
     private String albumName;
+    private int albumId;
 
-
-    public Album(String albumName) {
+    public Album(String albumName, int albumId) {
         this.albumName = albumName;
-        this.songs = new ArrayList<>();
+        this.albumId = albumId;
+    }
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public int getAlbumId() {
+        return albumId;
     }
 
     @Override
