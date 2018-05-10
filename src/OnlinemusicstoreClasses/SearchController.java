@@ -66,7 +66,7 @@ private TableView<Song> table;
 
                                 //Go through shoppingcart to see if we already have the song
                                 for (int i = 0; i < scList.size(); i++){
-                                    if (scList.get(i) == rowData){
+                                    if (scList.get(i).equals(rowData)){
                                         songIsInList = true;
                                     }
                                 }
