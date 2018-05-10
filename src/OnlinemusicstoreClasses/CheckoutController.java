@@ -106,10 +106,17 @@ public class CheckoutController implements Initializable{
         table.setItems(songs);
 
         calculateCost();
+       
     }
     public void boughtItems(){
 
-
+        if (nameField.getText().isEmpty() || lastnameField.getText().isEmpty()||
+        creditcardnr1.getText().isEmpty() || creditcardnr2.getText().isEmpty()|| creditcardnr3.getText().isEmpty()||
+                date.getText().isEmpty()|| cvc.getText().isEmpty()
+                )  {
+            Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Fields must not be empty");
+            emptyAlert.show();
+        }
         String name = nameField.getText();
         String lastname = lastnameField.getText();
         int creditnbr1 = Integer.parseInt(creditcardnr1.getText());
