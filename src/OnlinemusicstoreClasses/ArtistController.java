@@ -70,7 +70,7 @@ public class ArtistController implements Initializable{
         String albumName = albumTextField.getText();
         double price;
         try {
-            price = Double.parseDouble(priceField.getText());
+            price = Double.parseDouble(albumPriceField.getText());
         } catch (NumberFormatException ex){
             wrongFormatAlert.show();
             clearAll();
