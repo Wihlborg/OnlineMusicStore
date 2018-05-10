@@ -17,13 +17,19 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
     @FXML
     Button adminButton;
+    @FXML
+    Button addMusicButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CurrentUser cu = CurrentUser.getInstance();
         if (!cu.isAdmin()){
             adminButton.setVisible(false);
+            if (!cu.isArtist()){
+                addMusicButton.setVisible(false);
+            }
         }
+
     }
 
     public void changeToShopcart(javafx.event.ActionEvent event){
@@ -69,7 +75,7 @@ public class MainMenuController implements Initializable {
 
         }
     }
-    public void changetoPlaylist(javafx.event.ActionEvent event){
+    public void changeToPlaylist(javafx.event.ActionEvent event){
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -120,6 +126,23 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void changeToArtist(ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/Artist.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (NullPointerException ne){
+            ne.getSuppressed();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void helpButtonPressed(ActionEvent event) {
 

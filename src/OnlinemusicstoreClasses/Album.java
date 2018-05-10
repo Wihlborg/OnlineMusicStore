@@ -7,16 +7,13 @@ public class Album {
     private String albumName;
 
 
-    public Album(String albumName, ArrayList<Song> songs) {
+    public Album(String albumName) {
         this.albumName = albumName;
-        this.songs = songs;
+        this.songs = new ArrayList<>();
     }
 
     @Override
     public String toString() {
-        return "Album{" +
-                "songs=" + songs +
-                ", albumName='" + albumName + '\'' +
-                '}';
+        return albumName;
     }
 }

@@ -110,7 +110,7 @@ public class DatabaseManager {
 
             ResultSet rs = albumStatement.executeQuery();
             while (rs.next()){
-                albums.add(new Album(rs.getString("albums.name"), new ArrayList<>()));
+                albums.add(new Album(rs.getString("albums.name")));
             }
         } catch (SQLException ex){
             ex.printStackTrace();
@@ -193,6 +193,40 @@ public class DatabaseManager {
         }
 
         }
+
+        //ARTIST METHODS START
+
+    public ArrayList<Artist> getUsersArtists(int userId){
+        ArrayList<Artist> artists = new ArrayList<>();
+        try {
+            PreparedStatement uaStatement = c.prepareStatement("SELECT * FROM artists WHERE users_idusers = ?");
+            uaStatement.setInt(1, userId);
+            ResultSet rs = uaStatement.executeQuery();
+            while (rs.next()){
+                artists.add(new Artist(rs.getInt("idartists"), rs.getString("name")));
+            }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return artists;
+    }
+
+    public ArrayList<Album> getArtistsAlbums(int userId){
+        ArrayList<Album> albums = new ArrayList<>();
+        try {
+            PreparedStatement aaStatement = c.prepareStatement("SELECT * FROM albums WHERE artists_idartists = ?");
+            aaStatement.setInt(1, userId);
+            ResultSet rs = aaStatement.executeQuery();
+            while (rs.next()){
+                albums.add(new Album(rs.getString("name")));
+            }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return albums;
+    }
+
+        //ARTIST METHODS END
 
         //ADMIN METHODS START
     public void banUser(int userId){

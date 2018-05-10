@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="OnlinemusicstoreClasses.ArtistController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.ArtistController">
+    <children>
+        <Label layoutX="238.0" layoutY="9.0" prefHeight="30.0" prefWidth="99.0" text="Add Music" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <effect>
+                <Glow level="1.0" />
+            </effect></Label>
+        <Button layoutX="551.0" layoutY="-1.0" mnemonicParsing="false" text="Log out" />
+        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+        <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToMainMenu" text="Back to Main Menu" />
+      <ChoiceBox fx:id="artistChoiceBox" layoutX="88.0" layoutY="54.0" prefWidth="150.0" />
+      <Label layoutX="33.0" layoutY="45.0" prefHeight="42.0" prefWidth="41.0" text="Artist" />
+      <ChoiceBox fx:id="albumChoiceBox" layoutX="88.0" layoutY="87.0" prefWidth="150.0" />
+      <Label layoutX="33.0" layoutY="79.0" prefHeight="42.0" prefWidth="41.0" text="Album" />
+      <Button layoutX="269.0" layoutY="87.0" mnemonicParsing="false" onAction="#addNewAlbum" text="Add new album" />
+      <Button layoutX="269.0" layoutY="54.0" mnemonicParsing="false" onAction="#addNewArtist" prefHeight="25.0" prefWidth="100.0" text="Add new artist" />
+      <Label layoutX="74.0" layoutY="146.0" prefHeight="25.0" prefWidth="68.0" text="SongName" />
+      <Label layoutX="74.0" layoutY="212.0" prefHeight="10.0" prefWidth="41.0" text="Price" />
+      <TextField fx:id="songNameTextField" layoutX="74.0" layoutY="175.0" />
+      <TextField fx:id="priceField" layoutX="74.0" layoutY="235.0" />
+      <Button layoutX="74.0" layoutY="279.0" mnemonicParsing="false" onAction="#addNewSong" text="Add new song" />
 
+    </children>
+    <stylesheets>
+        <URL value="@../OnlinemusicstoreClasses/style.css" />
+    </stylesheets>
 </AnchorPane>
