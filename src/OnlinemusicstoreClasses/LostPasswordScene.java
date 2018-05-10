@@ -29,7 +29,8 @@ DatabaseManager db=DatabaseManager.getInstance();
 
     @FXML
     private TextField emailLostPassword;
-@FXML TextField sequrityQ;
+
+    @FXML TextField sequrityQ;
 
     @FXML
     public void OkLostpassword(ActionEvent event) {
@@ -138,9 +139,22 @@ DatabaseManager db=DatabaseManager.getInstance();
         sequrityQ.clear();
 
 
-
-
     }
+
+
+        @FXML private void handlePressButton(ActionEvent event) throws IOException {
+            Node node = (Node)event.getSource();
+            Stage stage = (Stage)node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+
+
+        }
 
 
 }
