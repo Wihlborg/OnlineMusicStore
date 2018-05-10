@@ -91,6 +91,10 @@ public void changeToMainMenu(ActionEvent event){
         }
     }
 
+    @FXML
+    public void onEnter(ActionEvent ae){
+        signInAction(ae);
+    }
 }
 
 
