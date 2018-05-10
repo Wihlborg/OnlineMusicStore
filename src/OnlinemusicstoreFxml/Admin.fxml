@@ -32,10 +32,11 @@
             <TableColumn fx:id="answerColumn" prefWidth="116.0" text="Answer" />
         </columns>
       </TableView>
-      <Button fx:id="banButton" layoutX="227.0" layoutY="355.0" mnemonicParsing="false" onAction="#banUser" prefHeight="25.0" prefWidth="56.0" text="Ban" />
-      <Button fx:id="setArtistButton" layoutX="120.0" layoutY="355.0" mnemonicParsing="false" onAction="#setArtist" prefHeight="25.0" prefWidth="92.0" text="Set as artist" />
-      <Button fx:id="setAdminButton" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#setAdmin" prefHeight="25.0" prefWidth="92.0" text="Set as admin" />
-      <TextField fx:id="searchField" layoutX="354.0" layoutY="355.0" />
+      <Button fx:id="banButton" layoutX="248.0" layoutY="305.0" mnemonicParsing="false" onAction="#banUser" prefHeight="25.0" prefWidth="56.0" text="Ban" />
+      <Button fx:id="setArtistButton" layoutX="120.0" layoutY="305.0" mnemonicParsing="false" onAction="#setArtist" prefHeight="25.0" prefWidth="92.0" text="Set as artist" />
+      <Button fx:id="setAdminButton" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#setAdmin" prefHeight="25.0" prefWidth="92.0" text="Set as admin" />
+      <TextField fx:id="searchField" layoutX="363.0" layoutY="355.0" />
+      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToMainMenu" text="Back to Main Menu" />
 
     </children>
     <stylesheets>
