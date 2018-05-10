@@ -78,7 +78,9 @@ public class ArtistController implements Initializable{
         }
 
         db.addAlbum(albumName, artist.getArtistId(), price);
-
+        clearAll();
+        informationLabel.setText("Album added successfully!");
+        updateAlbumBox();
     }
 
 
