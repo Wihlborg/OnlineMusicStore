@@ -141,20 +141,20 @@ DatabaseManager db=DatabaseManager.getInstance();
 
     }
 
-    @FXML
-    private void handlePressButton(ActionEvent event) throws IOException {
 
-        Node node = (Node)event.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
+        @FXML private void handlePressButton(ActionEvent event) throws IOException {
+            Node node = (Node)event.getSource();
+            Stage stage = (Stage)node.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("\"../OnlinemusicstoreFxml/sample.fxml\""));
-        Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
+            Parent root = loader.load();
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
 
-    }
+
+        }
 
 
 }
