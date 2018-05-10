@@ -109,12 +109,6 @@ public class CheckoutController implements Initializable{
     }
     public void baughtItems(){
 
-        double total = 0 ;
-        for (Song song : table.getItems()) {
-            total=song.getSongPrice();
-            totalamount.setText(String.valueOf(total));
-        }
-
 
         String name=nameColumn.getText();
         String lastna=lastname.getText();
