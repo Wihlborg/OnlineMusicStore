@@ -37,6 +37,7 @@ private TableView<Song> table;
     TableColumn<Song, String> columnArtist;
     @FXML
     TableColumn<Song, String> columnAlbum;
+
     @FXML TableColumn<Song,Double> columnPrice;
 
     ShoppingCart sc = ShoppingCart.getInstance();
@@ -59,6 +60,7 @@ private TableView<Song> table;
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
 
                                 Song rowData = row.getItem();
+                    System.out.println(rowData);
                                 ObservableList scList = sc.getSongLinkedList();
                                 boolean songIsInList = false;
 
@@ -87,11 +89,11 @@ private TableView<Song> table;
         albums = dm.getAlbums(search); //TODO: a tableview with albums
 
         //add the values into the tableview
+        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+        columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("songPrice"));
         table.setItems(songs);
-        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("AlbumName"));
-        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("ArtistName"));
-        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-        columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("SongPrice"));
     }
 
 

@@ -1,5 +1,7 @@
 package OnlinemusicstoreClasses;
 
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -85,9 +87,10 @@ public class DatabaseManager {
 
             while (rs.next()){
                 songs.add(new Song(rs.getString("artists.name"),
-                        rs.getString("albums.name"),
                         rs.getString("songs.name"),
-                        new int[]{0, 0},rs.getDouble("songs.price")));
+                        rs.getString("albums.name"),
+                        new int[]{0, 0},
+                        rs.getDouble("songs.price")));
             }
 
 
@@ -229,7 +232,7 @@ public class DatabaseManager {
             PreparedStatement setArtistStatement = c.prepareStatement("UPDATE users SET is_artist = ? WHERE idusers = ?");
             setArtistStatement.setInt(2, userId);
             //Check if the user is already artist. If FALSE, set to TRUE and vice versa.
-            PreparedStatement getArtistStatement = c.prepareStatement("SELECT is_artist FROM users WHERE idusers = ?");
+            PreparedStatement getArtistStatement = c.prepareStatement("SELECT is_artist FROM users WHERE idusers = ? ");
             getArtistStatement.setInt(1, userId);
             ResultSet rs = getArtistStatement.executeQuery();
             while (rs.next()){
@@ -245,4 +248,5 @@ public class DatabaseManager {
 
         }
     }
+
 }

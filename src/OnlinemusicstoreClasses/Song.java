@@ -36,13 +36,15 @@ public class Song {
     public String getAlbumName() {
         return albumName;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Song{" +
                 "artistName='" + artistName + '\'' +
                 ", songName='" + songName + '\'' +
                 ", length=" + Arrays.toString(length) +
                 ", albumName='" + albumName + '\'' +
+                ", songPrice=" + songPrice +
                 '}';
     }
 }
