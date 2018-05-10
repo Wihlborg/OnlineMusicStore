@@ -132,7 +132,7 @@ updateTotalCost();
             table.requestFocus();
             table.getItems().remove(selectedItem);
 
-   updateTotalCost();
+            updateTotalCost();
     if(songs.size()<=0){
         totalCost.clear();
     }
