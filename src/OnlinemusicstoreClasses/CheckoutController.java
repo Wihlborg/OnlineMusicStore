@@ -19,23 +19,23 @@ import java.util.ResourceBundle;
 public class CheckoutController implements Initializable{
 
     @FXML
-     TextField nameColumn;
+     TextField names;
 
     @FXML
      TextField lastname;
 
     @FXML
-     Button creditcardnr1;
+     TextField creditcardnr1;
     @FXML
-     Button creditcardnr2;
+     TextField creditcardnr2;
     @FXML
-     Button creditcardnr3;
+     TextField creditcardnr3;
     @FXML
-     Button date;
+     TextField date;
     @FXML
-     Button cvc;
+     TextField cvc;
     @FXML
-     Button totalamount;
+     TextField totalamount;
 
 
 
@@ -110,7 +110,7 @@ public class CheckoutController implements Initializable{
     public void baughtItems(){
 
 
-        String name=nameColumn.getText();
+        String name=names.getText();
         String lastna=lastname.getText();
         int creditnbr1= Integer.parseInt(creditcardnr1.getText());
         int creditnbr2=Integer.parseInt(creditcardnr2.getText());
