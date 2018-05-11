@@ -44,7 +44,8 @@ public class CheckoutController implements Initializable{
      TextField cvc;
     @FXML
      TextField totalAmount;
-
+@FXML
+        Button payButton;
 
 
     ShoppingCart fc = ShoppingCart.getInstance();
@@ -120,30 +121,31 @@ String  bajs=user.getUserName();
             Alert emptyAlert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome To Payment!");
             emptyAlert.show();
         }
-        else if (!nameField.getText().isEmpty() && !lastnameField.getText().isEmpty() &&
-                !creditcardnr1.getText().isEmpty() && !creditcardnr2.getText().isEmpty() && !creditcardnr3.getText().isEmpty() &&
-                !date.getText().isEmpty() && !cvc.getText().isEmpty()){
-boughtItems();
+
+
+
 
         }
-    }
-    public void boughtItems(){
-String userName = user.getUserName();
 
+    public void buyItems(ActionEvent event){
+        String userName = user.getUserName();
         String name = nameField.getText();
         String lastname = lastnameField.getText();
+        System.out.println("WORKED 1");
         int creditnbr1 = Integer.parseInt(creditcardnr1.getText());
         int creditnbr2 = Integer.parseInt(creditcardnr2.getText());
         int creditnbr3 = Integer.parseInt(creditcardnr3.getText());
         int dates = Integer.parseInt(date.getText());
         int cvcnbr = Integer.parseInt(cvc.getText());
         double amountPrice = Double.parseDouble(totalAmount.getText());
-
+        System.out.println("WORKED 2");
 
         String tooMail=  db.getEmai(userName);;
         String fromMail="onlinemusicstorev1@gmail.com";
         String password ="9x828x5w";
-        String subject="Lost Password";
+        String subject="Purchase Reciet";
+
+        System.out.println("WORKED 3");
 
         String host = "smtp.gmail.com";
         Properties props = new Properties();
@@ -155,30 +157,41 @@ String userName = user.getUserName();
         props.put("mail.smtp.auth", "true");
         Session session = Session.getInstance(props);
         double price= calculateCost();
+
+        System.out.println("WORKED 4");
+
         try {
+            System.out.println("WORKED 5");
 
             Message message1 = new MimeMessage(session);
             message1.setFrom(new InternetAddress(fromMail));
             message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
             message1.setSubject(subject);
-            for (int i =0;i<songs.size();i++){
 
-                String s = String.valueOf(songs.get(i));
+            System.out.println("WORKED 6");
+
+
+
+                //String s = String.valueOf(songs.get(0));
 
             message1.setText("Dear"+" "+name+" "+lastname
-                    + "\n\n"+"Thank you for your purchase! "+price+ "\n\n"+s+"\t");
+                    + "\n\n"+"Thank you for your purchase! "+price+ "\n\n"+""+"\t");
 
             Transport transport =session.getTransport("smtp");
             transport.connect(host,fromMail,password);
             transport.sendMessage(message1,message1.getAllRecipients());
+                System.out.println("EMAIL SENT");
             transport.close();
 
             Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
             correctWorked.show();
-            }
+
         } catch (MessagingException e) {
 
+        } catch (NullPointerException e){
+
         }
+
 
     }
 
