@@ -160,7 +160,7 @@ private TableView<Song> table;
             stage.setScene(scene);
 
         } catch (NullPointerException ne){
-
+            
             ne.getSuppressed();
 
         } catch (IOException e) {
