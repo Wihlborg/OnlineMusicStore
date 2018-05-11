@@ -92,6 +92,7 @@ public class CheckoutController implements Initializable{
 
 
 
+
         columnSong.setText("Song");
         columnAlbum.setText("Album");
         columnArtist.setText("Artist");
@@ -106,17 +107,22 @@ public class CheckoutController implements Initializable{
         table.setItems(songs);
 
         calculateCost();
-       
+        if (nameField.getText().isEmpty() || lastnameField.getText().isEmpty()||
+                creditcardnr1.getText().isEmpty() || creditcardnr2.getText().isEmpty()|| creditcardnr3.getText().isEmpty()||
+                date.getText().isEmpty()|| cvc.getText().isEmpty()
+                )  {
+            Alert emptyAlert = new Alert(Alert.AlertType.CONFIRMATION, "Welcome To Payment!");
+            emptyAlert.show();
+        }
+        else if (!nameField.getText().isEmpty() && !lastnameField.getText().isEmpty() &&
+                !creditcardnr1.getText().isEmpty() && !creditcardnr2.getText().isEmpty() && !creditcardnr3.getText().isEmpty() &&
+                !date.getText().isEmpty() && !cvc.getText().isEmpty()){
+
+            boughtItems();
+        }
     }
     public void boughtItems(){
 
-        if (nameField.getText().isEmpty() || lastnameField.getText().isEmpty()||
-        creditcardnr1.getText().isEmpty() || creditcardnr2.getText().isEmpty()|| creditcardnr3.getText().isEmpty()||
-                date.getText().isEmpty()|| cvc.getText().isEmpty()
-                )  {
-            Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Fields must not be empty");
-            emptyAlert.show();
-        }
         String name = nameField.getText();
         String lastname = lastnameField.getText();
         int creditnbr1 = Integer.parseInt(creditcardnr1.getText());
