@@ -147,6 +147,31 @@ private TableView<Song> table;
 
     }
 
+    @FXML
+    void returnButton(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+        } catch (NullPointerException ne){
+
+            ne.getSuppressed();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+    }
+
 }
 
 
