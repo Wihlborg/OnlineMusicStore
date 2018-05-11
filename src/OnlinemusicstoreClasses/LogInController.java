@@ -36,6 +36,8 @@ DatabaseManager db = DatabaseManager.getInstance();
             db.updateCurrentUser(UserName.getText().trim());
             LogInController l=new LogInController();
             l.changeToMainMenu(event);
+
+
         }
         else if (password==false){ //else we show an error message
             Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Wrong username or password");

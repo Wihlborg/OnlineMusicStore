@@ -7,6 +7,7 @@ public class CurrentUser {
     private boolean isArtist;
     private boolean isAdmin;
 
+
     private CurrentUser(){
     }
 
@@ -49,6 +50,8 @@ public class CurrentUser {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+
 
 
 }

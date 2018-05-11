@@ -316,4 +316,26 @@ public class DatabaseManager{
         }
     }
 
-}
+    public String getEmai(String username){
+        ArrayList<String>onlineusers=new ArrayList<>();
+        try {
+            PreparedStatement userStatement = c.prepareStatement("SELECT email FROM users WHERE users.username = ?");
+            userStatement.setString(1, username);
+            ResultSet rs = userStatement.executeQuery();
+            while (rs.next()){
+                onlineusers.add(rs.getString("email"));
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return String.valueOf(onlineusers);
+    }
+
+
+
+    }
+
+
+

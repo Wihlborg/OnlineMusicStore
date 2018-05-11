@@ -12,8 +12,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class CheckoutController implements Initializable{
@@ -51,13 +59,10 @@ public class CheckoutController implements Initializable{
     @FXML TableColumn<Song,Double> columnPrice;
     private ObservableList<Song> songs;
 
-    @FXML
-    void helpButtonPressed(ActionEvent event) {
-
-    }
 
 
-
+    DatabaseManager db =DatabaseManager.getInstance();
+    CurrentUser user=CurrentUser.getInstance();
 
     @FXML
     void switchToShop(ActionEvent event) {
@@ -90,8 +95,9 @@ public class CheckoutController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-
+String  bajs=user.getUserName();
+        System.out.println(bajs);
+        System.out.println(db.getEmai(bajs));
 
         columnSong.setText("Song");
         columnAlbum.setText("Album");
@@ -117,11 +123,12 @@ public class CheckoutController implements Initializable{
         else if (!nameField.getText().isEmpty() && !lastnameField.getText().isEmpty() &&
                 !creditcardnr1.getText().isEmpty() && !creditcardnr2.getText().isEmpty() && !creditcardnr3.getText().isEmpty() &&
                 !date.getText().isEmpty() && !cvc.getText().isEmpty()){
+boughtItems();
 
-            boughtItems();
         }
     }
     public void boughtItems(){
+String userName = user.getUserName();
 
         String name = nameField.getText();
         String lastname = lastnameField.getText();
@@ -132,15 +139,57 @@ public class CheckoutController implements Initializable{
         int cvcnbr = Integer.parseInt(cvc.getText());
         double amountPrice = Double.parseDouble(totalAmount.getText());
 
+
+        String tooMail=  db.getEmai(userName);;
+        String fromMail="onlinemusicstorev1@gmail.com";
+        String password ="9x828x5w";
+        String subject="Lost Password";
+
+        String host = "smtp.gmail.com";
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host",host);
+        props.put("mail.smtp.user",fromMail);
+        props.put("mail.smtp.password",password);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        Session session = Session.getInstance(props);
+        double price= calculateCost();
+        try {
+
+            Message message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress(fromMail));
+            message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
+            message1.setSubject(subject);
+            for (int i =0;i<songs.size();i++){
+
+                String s = String.valueOf(songs.get(i));
+
+            message1.setText("Dear"+" "+name+" "+lastname
+                    + "\n\n"+"Thank you for your purchase! "+price+ "\n\n"+s+"\t");
+
+            Transport transport =session.getTransport("smtp");
+            transport.connect(host,fromMail,password);
+            transport.sendMessage(message1,message1.getAllRecipients());
+            transport.close();
+
+            Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
+            correctWorked.show();
+            }
+        } catch (MessagingException e) {
+
+        }
+
     }
 
-    public void calculateCost(){
+    public double calculateCost(){
 
             double total = 0 ;
             for (Song song : table.getItems()) {
                 total += song.getSongPrice() ;
             }
             totalAmount.setText(String.valueOf(total));
+        return total;
     }
 
 

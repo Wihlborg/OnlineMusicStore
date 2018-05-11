@@ -97,7 +97,6 @@ DatabaseManager db=DatabaseManager.getInstance();
             wrongPasswordAlert.show();
         }
 
-
     }
     public void changeToCreateNewUser(javafx.event.ActionEvent event){
         try {

@@ -8,13 +8,15 @@ public class User {
     private int admin;
     private int artist;
 
-    public User(int userId, String userName, String email, String securityAnswer, int isAdmin, int isArtist) {
+
+    public User(int userId, String userName, String email, String securityAnswer, int admin, int artist) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.securityAnswer = securityAnswer;
-        this.admin = isAdmin;
-        this.artist = isArtist;
+        this.admin = admin;
+        this.artist = artist;
+
     }
 
     public int getUserId() {
@@ -40,4 +42,6 @@ public class User {
     public int getArtist() {
         return artist;
     }
-}
+
+    }
+

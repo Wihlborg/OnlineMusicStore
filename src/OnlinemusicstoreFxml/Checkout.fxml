@@ -79,7 +79,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="168.0" layoutY="338.0" mnemonicParsing="false" onAction="#returnToSearch" text="&lt;&lt; return to search" />
+      <Button layoutX="168.0" layoutY="338.0" mnemonicParsing="false" onAction="#returnToSearch" text="&lt;&lt; return to menu" />
    </children>
    <stylesheets>
       <URL value="@../OnlinemusicstoreClasses/style.css" />
