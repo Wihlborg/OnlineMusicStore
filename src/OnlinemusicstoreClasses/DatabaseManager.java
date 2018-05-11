@@ -331,7 +331,7 @@ public class DatabaseManager{
         }
 
 
-        return String.valueOf(onlineusers);
+        return String.valueOf(onlineusers.get(0).substring(0,onlineusers.get(0).length()));
     }
 
 

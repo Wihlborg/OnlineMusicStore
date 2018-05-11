@@ -96,7 +96,7 @@ public class CheckoutController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-String  bajs=user.getUserName();
+        String  bajs=user.getUserName();
         System.out.println(bajs);
         System.out.println(db.getEmai(bajs));
 
@@ -163,33 +163,38 @@ String  bajs=user.getUserName();
         try {
             System.out.println("WORKED 5");
 
-            Message message1 = new MimeMessage(session);
-            message1.setFrom(new InternetAddress(fromMail));
-            message1.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
-            message1.setSubject(subject);
+            Message messageCheckout = new MimeMessage(session);
+            messageCheckout.setFrom(new InternetAddress(fromMail));
+            messageCheckout.setRecipient(Message.RecipientType.TO,new InternetAddress(tooMail));
+            messageCheckout.setSubject(subject);
 
             System.out.println("WORKED 6");
 
 
+for (Song song : songs){
+    String album=song.getAlbumName();
+    String artist=song.getArtistName();
+   String names= song.getSongName();
 
-                //String s = String.valueOf(songs.get(0));
 
-            message1.setText("Dear"+" "+name+" "+lastname
-                    + "\n\n"+"Thank you for your purchase! "+price+ "\n\n"+""+"\t");
+            messageCheckout.setText("Dear"+" "+name+" "+lastname
+                    + "\n\n"+"Thank you for your purchase! "+"\n"+"totalprice: "+price+ "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
+                    ""+names+"\n");
 
             Transport transport =session.getTransport("smtp");
             transport.connect(host,fromMail,password);
-            transport.sendMessage(message1,message1.getAllRecipients());
+            transport.sendMessage(messageCheckout,messageCheckout.getAllRecipients());
                 System.out.println("EMAIL SENT");
             transport.close();
 
             Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
             correctWorked.show();
+}
 
         } catch (MessagingException e) {
-
+            e.printStackTrace();
         } catch (NullPointerException e){
-
+            e.printStackTrace();
         }
 
 
