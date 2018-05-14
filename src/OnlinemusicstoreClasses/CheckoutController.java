@@ -177,19 +177,37 @@ for (Song song : songs){
    String names= song.getSongName();
 
 
-            messageCheckout.setText("Dear"+" "+name+" "+lastname
-                    + "\n\n"+"Thank you for your purchase! "+"\n"+"totalprice: "+price+ "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
-                    ""+names+"\n");
+
+    messageCheckout.setText("Dear"+" "+name+" "+lastname
+            + "\n\n"+"Thank you for your purchase! "+"\n"+"totalprice: "+price+ "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
+            ""+names+"\n");
+}
 
             Transport transport =session.getTransport("smtp");
             transport.connect(host,fromMail,password);
             transport.sendMessage(messageCheckout,messageCheckout.getAllRecipients());
-                System.out.println("EMAIL SENT");
+            System.out.println("EMAIL SENT");
             transport.close();
 
-            Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
-            correctWorked.show();
-}
+            Payment payment=new Payment();
+            boolean confirmed=true;
+            payment.setPaid(confirmed);
+
+            if (confirmed==true){
+
+
+                Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
+                correctWorked.show();
+
+                PlaylistController playlistController=new PlaylistController();
+
+
+                playlistController.showPlaylist();
+                
+
+
+
+            }
 
         } catch (MessagingException e) {
             e.printStackTrace();

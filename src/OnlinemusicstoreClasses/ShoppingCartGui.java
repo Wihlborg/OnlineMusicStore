@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -34,8 +31,8 @@ public class ShoppingCartGui implements Initializable{
     TableColumn<Song, String> columnAlbum;
     @FXML TableColumn<Song,Double>columnPrice;
     private ObservableList<Song> songs;
-@FXML private Button deleteButton;
-@FXML private Button clearAll;
+
+
 @FXML private TextField totalCost;
 
     @Override
@@ -53,7 +50,7 @@ public class ShoppingCartGui implements Initializable{
         columnPrice.setCellValueFactory(new PropertyValueFactory<Song, Double>("songPrice"));
         table.setItems(songs);
 
-updateTotalCost();
+        updateTotalCost();
 
 
 
@@ -67,6 +64,9 @@ updateTotalCost();
 
 
     public void changeToMenu(javafx.event.ActionEvent event){
+
+
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -90,6 +90,15 @@ updateTotalCost();
     @FXML
     void checkoutMenu(ActionEvent event) {
 
+
+        if (songs.isEmpty()){
+            Alert alert=new Alert(Alert.AlertType.ERROR,"You dont have items in your shoppingcart");
+            alert.show();
+        }
+        else if (!songs.isEmpty()){
+
+
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -111,7 +120,7 @@ updateTotalCost();
         }
 
 
-
+        }
 
 
 
