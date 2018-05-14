@@ -2,7 +2,7 @@ package OnlinemusicstoreClasses;
 
 import javafx.collections.ObservableList;
 
-import java.io.InputStream;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -195,6 +195,30 @@ public class DatabaseManager{
 
         }
 
+        public File getMusicFile(int songId) throws IOException {
+            File fileToReturn = new File("song.mp3");
+            try {
+                PreparedStatement getBlobStatement = c.prepareStatement("SELECT musicfile FROM songs WHERE idsongs = ?");
+                getBlobStatement.setInt(1, songId);
+                ResultSet rs = getBlobStatement.executeQuery();
+                while (rs.next()){
+                    Blob ablob = rs.getBlob(1);
+                    InputStream is = ablob.getBinaryStream();
+                    FileOutputStream fos = new FileOutputStream(fileToReturn);
+
+                    byte[] buff = new byte[16777215];
+                    for (int b = is.read(buff); b != -1; b = is.read(buff)) {
+                        fos.write(buff, 0, b);
+                    }
+
+                    is.close();
+                    fos.close();
+                }
+            } catch (SQLException ex){
+                ex.printStackTrace();
+            }
+            return fileToReturn;
+        }
         //ARTIST METHODS START
 
     public ArrayList<Artist> getUsersArtists(int userId){
