@@ -38,12 +38,7 @@ public class PlaylistController implements Initializable {
 
     private ObservableList<Song> songs;
     public void showPlaylist(){
-        Song.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-        Artist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
-        Album.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
-        Song1.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-        Artist1.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
-        Album1.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+
 
 
         songs = gc.getSongLinkedList();
@@ -82,5 +77,16 @@ public class PlaylistController implements Initializable {
         Song1.setText("Song");
         Album1.setText("Album");
         Artist1.setText("Artist");
+
+        Song.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        Artist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+        Album.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+        Song1.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        Artist1.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+        Album1.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+
+
+
+
     }
 }
