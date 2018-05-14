@@ -13,9 +13,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,14 +38,17 @@ public class ArtistController implements Initializable{
     DatabaseManager db = DatabaseManager.getInstance();
     ObservableList<Artist> artists;
     ObservableList<Album> albums;
+    FileChooser fileChooser = new FileChooser();
 
     Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Fields must not be empty");
     Alert wrongFormatAlert = new Alert(Alert.AlertType.ERROR, "Price must be a numerical value");
+    Alert fileNotFoundAlert = new Alert(Alert.AlertType.ERROR, "File not found");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateArtistBox();
         artistChoiceBox.setOnAction(event -> updateAlbumBox());
+        fileChooser.setTitle("Choose music file");
     }
 
     @FXML
@@ -86,12 +93,14 @@ public class ArtistController implements Initializable{
 
 
     @FXML
-    public void addNewSong(){
+    public void addNewSong(ActionEvent event){
+        //Om något av fälten är tomma visas felmeddelande och inget händer
         if (songNameTextField.getText().trim().isEmpty() || priceField.getText().trim().isEmpty() || artistChoiceBox.getValue() == null || albumChoiceBox.getValue() == null){
             emptyAlert.show();
             clearAll();
             return;
         }
+        //Ta in data från fälten. Felmeddelande om priceField inte har en double.
         Album album = albumChoiceBox.getValue();
         String name = songNameTextField.getText();
         double price;
@@ -103,9 +112,24 @@ public class ArtistController implements Initializable{
             return;
         }
 
-        db.addSong(name, album.getAlbumId(), price);
-        clearAll();
-        informationLabel.setText("Song successfully added!");
+        //Öppna en filechooser där användaren får välja fil (går det att kolla filtyp? vet ej)
+        //Om ingen fil vals blir det felmeddelande, annars skickas datan till DBn.
+        Node node = (Node)event.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if (file == null){
+            fileNotFoundAlert.show();
+            return;
+        }
+        try {
+            InputStream is = new FileInputStream(file);
+            db.addSong(name, album.getAlbumId(), price, is);
+            clearAll();
+            informationLabel.setText("Song successfully added!");
+        } catch (IOException ioex){
+            fileNotFoundAlert.show();
+        }
+
     }
 
     @FXML

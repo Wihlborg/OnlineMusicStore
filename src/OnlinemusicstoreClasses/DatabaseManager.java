@@ -2,6 +2,7 @@ package OnlinemusicstoreClasses;
 
 import javafx.collections.ObservableList;
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -247,12 +248,13 @@ public class DatabaseManager{
         }
     }
 
-    public void addSong(String songName, int albumId, double songPrice){
+    public void addSong(String songName, int albumId, double songPrice, InputStream inputData){
         try {
-            PreparedStatement addSongStatement = c.prepareStatement("INSERT INTO songs (songname, albums_idalbums, price) VALUES (?, ? ,?)");
+            PreparedStatement addSongStatement = c.prepareStatement("INSERT INTO songs (songname, albums_idalbums, price, musicfile) VALUES (?, ? , ?, ?)");
             addSongStatement.setString(1, songName);
             addSongStatement.setInt(2, albumId);
             addSongStatement.setDouble(3, songPrice);
+            addSongStatement.setBlob(4, inputData);
             addSongStatement.executeUpdate();
         } catch (SQLException ex){
             ex.printStackTrace();
@@ -316,7 +318,7 @@ public class DatabaseManager{
         }
     }
 
-    public String getEmai(String username){
+    public String getEmail(String username){
         ArrayList<String>onlineusers=new ArrayList<>();
         try {
             PreparedStatement userStatement = c.prepareStatement("SELECT email FROM users WHERE users.username = ?");

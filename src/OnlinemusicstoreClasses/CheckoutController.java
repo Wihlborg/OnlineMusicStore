@@ -20,7 +20,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -98,7 +97,7 @@ public class CheckoutController implements Initializable{
 
         String  bajs=user.getUserName();
         System.out.println(bajs);
-        System.out.println(db.getEmai(bajs));
+        System.out.println(db.getEmail(bajs));
 
         columnSong.setText("Song");
         columnAlbum.setText("Album");
@@ -140,7 +139,7 @@ public class CheckoutController implements Initializable{
         double amountPrice = Double.parseDouble(totalAmount.getText());
         System.out.println("WORKED 2");
 
-        String tooMail=  db.getEmai(userName);;
+        String tooMail=  db.getEmail(userName);;
         String fromMail="onlinemusicstorev1@gmail.com";
         String password ="9x828x5w";
         String subject="Purchase Reciet";
