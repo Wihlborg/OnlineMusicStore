@@ -29,6 +29,8 @@ public class Song {
         return songName;
     }
 
+    public int getSongId(){return songId;}
+
 
     public String getAlbumName() {
         return albumName;
