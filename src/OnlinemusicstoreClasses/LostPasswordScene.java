@@ -19,11 +19,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Random;
 import java.util.UUID;
 
 public class LostPasswordScene {
 DatabaseManager db=DatabaseManager.getInstance();
-
+    Random r = new Random();
     @FXML
     private TextField UserNameLostPassword;
 
@@ -60,8 +61,14 @@ DatabaseManager db=DatabaseManager.getInstance();
             String fromMail="onlinemusicstorev1@gmail.com";
             String password ="9x828x5w";
             String subject="Lost Password";
-            String newPassword= UUID.randomUUID().toString();
-            
+            String alphabet="123xyz";
+String newPassword="";
+
+            for (int i = 0; i < 5; i++) {
+            newPassword += String.valueOf(alphabet.charAt(r.nextInt(alphabet.length())));
+
+            }
+
             //linka message så databasen uppdateras med nya passet.
             db.changeUsersPassword(username,newPassword);
             String host = "smtp.gmail.com";
@@ -73,6 +80,7 @@ DatabaseManager db=DatabaseManager.getInstance();
             props.put("mail.smtp.port", "587");
             props.put("mail.smtp.auth", "true");
             Session session = Session.getInstance(props);
+
             try {
                 Message message1 = new MimeMessage(session);
                 message1.setFrom(new InternetAddress(fromMail));
@@ -92,10 +100,11 @@ DatabaseManager db=DatabaseManager.getInstance();
 
             }
 
-        }
-        else if (confimation==false){
+
+        if (confimation==false){
             Alert wrongPasswordAlert = new Alert(Alert.AlertType.ERROR, "Wrong Input!");
             wrongPasswordAlert.show();
+        }
         }
 
     }
