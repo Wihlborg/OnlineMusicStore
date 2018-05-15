@@ -169,19 +169,22 @@ public class CheckoutController implements Initializable{
 
             System.out.println("WORKED 6");
 
+            String message = ("Dear " + name + " " + lastname + "\n");
+            for (Song song : songs){
+                String album=song.getAlbumName();
+                String artist=song.getArtistName();
+                String names= song.getSongName();
 
-for (Song song : songs){
-    String album=song.getAlbumName();
-    String artist=song.getArtistName();
-   String names= song.getSongName();
 
 
+                message +=
+                "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
+                ""+names+"\n";
+            }
+            
+            message += "\n\n Total cost: " + price;
 
-    messageCheckout.setText("Dear"+" "+name+" "+lastname
-            + "\n\n"+"Thank you for your purchase! "+"\n"+"totalprice: "+price+ "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
-            ""+names+"\n");
-}
-
+            messageCheckout.setText(message);
             Transport transport =session.getTransport("smtp");
             transport.connect(host,fromMail,password);
             transport.sendMessage(messageCheckout,messageCheckout.getAllRecipients());
