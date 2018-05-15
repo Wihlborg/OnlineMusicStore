@@ -197,7 +197,7 @@ public class DatabaseManager{
         }
 
         public File getMusicFile(int songId) throws IOException {
-            File fileToReturn = new File("song.mp3");
+            File fileToReturn = new File("song.wav");
             try {
                 PreparedStatement getBlobStatement = c.prepareStatement("SELECT musicfile FROM songs WHERE idsongs = ?");
                 getBlobStatement.setInt(1, songId);

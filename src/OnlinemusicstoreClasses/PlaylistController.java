@@ -15,6 +15,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -124,6 +126,23 @@ public class PlaylistController implements Initializable {
 
 
 }
+
+    public void playSong(ActionEvent event){
+        Song songToPlay = tableAdded.getSelectionModel().getSelectedItem();
+        try {
+            db.getMusicFile(songToPlay.getSongId());
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("song.wav"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (UnsupportedAudioFileException ex){
+            System.out.println("File not found");
+        } catch (IOException ex){
+            ex.printStackTrace();
+        } catch (LineUnavailableException lex){
+            lex.printStackTrace();
+        }
+    }
 public void deletePlaylist(ActionEvent event){
     Song selectedItem = tableAdded.getSelectionModel().getSelectedItem();
     tableAdded.requestFocus();
