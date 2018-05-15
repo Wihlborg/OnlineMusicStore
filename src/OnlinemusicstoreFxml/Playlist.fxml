@@ -9,28 +9,27 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.PlaylistController">
    <children>
-      <TableView fx:id="table1" layoutY="185.0" prefHeight="140.0" prefWidth="600.0">
-        <columns>
-          <TableColumn fx:id="Song1" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="Artist1" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="Album1" prefWidth="75.0" text="C1" />
-        </columns>
-      </TableView>
       <Label layoutX="247.0" layoutY="6.0" text="Baught songs" />
       <Label layoutX="247.0" layoutY="163.0" text="Ur Playlist" />
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#changetoMainmenu" text="Main Menu" />
-      <Button layoutX="534.0" layoutY="325.0" mnemonicParsing="false" text="Play" />
-      <Button layoutX="463.0" layoutY="325.0" mnemonicParsing="false" text="Download" />
-      <Button layoutX="411.0" layoutY="325.0" mnemonicParsing="false" text="Remove" />
-      <Button layoutX="373.0" layoutY="325.0" mnemonicParsing="false" text="Add" />
+      <Button layoutX="553.0" layoutY="325.0" mnemonicParsing="false" text="Play" />
+      <Button layoutX="474.0" layoutY="325.0" mnemonicParsing="false" onAction="#deletePlaylist" text="Remove" />
        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
-      <TableView layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
+      <TableView fx:id="StartTable" layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="Song" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="Artist" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="Album" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="Song" prefWidth="200" text="C1" />
+          <TableColumn fx:id="Artist" prefWidth="200" text="C2" />
+            <TableColumn fx:id="Album" prefWidth="200" text="C1" />
         </columns>
       </TableView>
+      <TableView fx:id="tableAdded" layoutY="185.0" prefHeight="140.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="SongInPlaylist" prefWidth="200" text="C1" />
+          <TableColumn fx:id="ArtistInPlaylist" prefWidth="200.0" text="C2" />
+            <TableColumn fx:id="AlbumInPlaylist" prefWidth="200" text="C1" />
+        </columns>
+      </TableView>
+      <Button layoutX="407.0" layoutY="325.0" mnemonicParsing="false" onAction="#clearPlaylist" text="Clear" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />
