@@ -23,7 +23,7 @@
       <Button layoutX="362.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToShopcart" text="Shop" />
       <Button layoutX="208.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToPlaylist" text="Ur Playlists" />
       <Button layoutX="551.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
-      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpButtonPressed" text="Help" />
       <Button fx:id="adminButton" layoutX="295.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToAdmin" text="Admin" />
       <Button fx:id="addMusicButton" layoutX="430.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToArtist" text="Add Music" />
 

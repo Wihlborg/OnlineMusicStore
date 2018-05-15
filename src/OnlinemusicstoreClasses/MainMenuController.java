@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -145,6 +146,15 @@ public class MainMenuController implements Initializable {
 
     @FXML
     void helpButtonPressed(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Main menu");
+        alert.setHeaderText("Information about the main menu. ");
+        alert.setContentText("This is the main menu. To the left is the top playlist of the week, which is a " +
+                "playlist recommended by the Admin. Use the buttons on the bottom of the screen to navigate around the" +
+                "application.");
+
+        alert.showAndWait();
 
     }
 

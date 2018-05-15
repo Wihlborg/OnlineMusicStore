@@ -23,7 +23,7 @@
       <Button layoutX="463.0" layoutY="325.0" mnemonicParsing="false" text="Download" />
       <Button layoutX="411.0" layoutY="325.0" mnemonicParsing="false" text="Remove" />
       <Button layoutX="373.0" layoutY="325.0" mnemonicParsing="false" text="Add" />
-       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpMenuPressed" text="Help" />
       <TableView layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="Song" prefWidth="75.0" text="C1" />

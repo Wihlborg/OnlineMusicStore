@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -87,6 +88,16 @@ public class PlaylistController implements Initializable {
 
 
 
+
+    }
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Playlists");
+        alert.setHeaderText("Information about playlists");
+        alert.setContentText("This scene displays all your available playlists. ");
+
+        alert.showAndWait();
 
     }
 }

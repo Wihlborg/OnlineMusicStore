@@ -156,4 +156,15 @@ public class ShoppingCartGui implements Initializable{
             }
             totalCost.setText(String.valueOf(total));
         }
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Shopping cart");
+        alert.setHeaderText("How to use the shopping cart. ");
+        alert.setContentText("Here you can see the songs added to your cart. You can remove unwanted songs using the button" +
+                "\"Remove\" or you can remove all songs from the cart by pressing \"Clear all\". ");
+
+        alert.showAndWait();
+
+    }
 }

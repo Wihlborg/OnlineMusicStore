@@ -21,7 +21,7 @@
             </effect></Label>
         <Button fx:id="searchButton" layoutX="523.0" layoutY="355.0" mnemonicParsing="false" onAction="#searchForUsers" prefHeight="25.0" prefWidth="56.0" text="Search" />
         <Button layoutX="551.0" layoutY="-1.0" mnemonicParsing="false" text="Log out" />
-        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpMenuPressed" text="Help" />
       <TableView fx:id="usersTableView" layoutX="14.0" layoutY="91.0" prefHeight="200.0" prefWidth="578.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="id" />

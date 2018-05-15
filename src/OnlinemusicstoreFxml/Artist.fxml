@@ -19,7 +19,7 @@
                 <Glow level="1.0" />
             </effect></Label>
         <Button layoutX="551.0" layoutY="-1.0" mnemonicParsing="false" text="Log out" />
-        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpMenuPressed" text="Help" />
         <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToMainMenu" text="Back to Main Menu" />
       <ChoiceBox fx:id="artistChoiceBox" layoutX="88.0" layoutY="54.0" prefWidth="150.0" />
       <Label layoutX="33.0" layoutY="45.0" prefHeight="42.0" prefWidth="41.0" text="Artist" />

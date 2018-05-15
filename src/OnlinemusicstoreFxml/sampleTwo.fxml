@@ -16,7 +16,7 @@
       <Label layoutX="108.0" layoutY="72.0" text="AccountName:" />
       <Label layoutX="108.0" layoutY="129.0" text="PassWord:" />
       <Label layoutX="108.0" layoutY="183.0" text="Security Question:" />
-      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+      <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpMenuPressed" text="Help" />
       <Label layoutX="108.0" layoutY="232.0" text="Email" />
       <TextField fx:id="emailField" layoutX="108.0" layoutY="249.0" />
    </children>

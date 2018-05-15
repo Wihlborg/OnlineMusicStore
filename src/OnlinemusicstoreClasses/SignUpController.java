@@ -1,5 +1,6 @@
 package OnlinemusicstoreClasses;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -61,5 +62,16 @@ public void getNewAccount(javafx.event.ActionEvent event){
 
         }
         }
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Signing up");
+        alert.setHeaderText("Information about signing up");
+        alert.setContentText("Here you create your account by filling in the forms. When you're done click the button" +
+                "\"Save user\". After this you can log in on the login menu.");
+
+        alert.showAndWait();
+
+    }
     }
 

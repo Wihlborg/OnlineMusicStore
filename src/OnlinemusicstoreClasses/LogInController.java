@@ -97,6 +97,22 @@ public void changeToMainMenu(ActionEvent event){
     public void onEnter(ActionEvent ae){
         signInAction(ae);
     }
+
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Login");
+        alert.setHeaderText("Information about the login screen. ");
+        alert.setContentText("If you don't already have an account you can create one by pressing the \"Sign up\" button." +
+                "This is necessary for logging in. If you can't remember your password you can get a new one by pressing the " +
+                "\"Forgot password\" button and then follow the instructions. ");
+
+        alert.showAndWait();
+
+    }
+
 }
+
+
 
 

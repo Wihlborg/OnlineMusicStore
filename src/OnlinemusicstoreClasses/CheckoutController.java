@@ -245,4 +245,15 @@ for (Song song : songs){
 
         }
     }
-}
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Shopping cart");
+        alert.setHeaderText("How to use the shopping cart. ");
+        alert.setContentText("This is where you buy the songs that you have added to your cart. Fill in all the necessary" +
+                "information then press the pay button to confirm the transaction. ");
+
+        alert.showAndWait();
+    }
+
+    }
