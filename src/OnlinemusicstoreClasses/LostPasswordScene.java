@@ -145,7 +145,7 @@ DatabaseManager db=DatabaseManager.getInstance();
             Node node = (Node)event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/mainMenu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

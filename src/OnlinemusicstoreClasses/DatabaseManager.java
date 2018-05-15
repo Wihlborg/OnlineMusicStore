@@ -366,11 +366,11 @@ public class DatabaseManager{
         ArrayList<Song> boughtSongs = new ArrayList<>();
         try {
             PreparedStatement boughtSongsStatement = c.prepareStatement("select * " +
-                    "FROM songs, artists, albums, users_has_songs" +
-                    "WHERE users_has_songs.users_idusers = ?" +
-                    "AND users_has_songs.songs_idsongs = songs.idsongs" +
-                    "AND albums.idalbums = songs.albums_idalbums" +
-                    "AND artists.idartists = albums.artists_idartists;");
+                    " FROM songs, artists, albums, users_has_songs" +
+                    " WHERE users_has_songs.users_idusers = ?" +
+                    " AND users_has_songs.songs_idsongs = songs.idsongs" +
+                    " AND albums.idalbums = songs.albums_idalbums" +
+                    " AND artists.idartists = albums.artists_idartists;");
             boughtSongsStatement.setInt(1, userID);
             ResultSet rs = boughtSongsStatement.executeQuery();
             while (rs.next()){
