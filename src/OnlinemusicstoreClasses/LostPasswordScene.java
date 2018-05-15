@@ -61,6 +61,7 @@ DatabaseManager db=DatabaseManager.getInstance();
             String password ="9x828x5w";
             String subject="Lost Password";
             String newPassword= UUID.randomUUID().toString();
+            
             //linka message så databasen uppdateras med nya passet.
             db.changeUsersPassword(username,newPassword);
             String host = "smtp.gmail.com";
