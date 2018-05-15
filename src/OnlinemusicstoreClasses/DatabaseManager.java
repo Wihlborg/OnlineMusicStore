@@ -383,6 +383,21 @@ public class DatabaseManager{
         return boughtSongs;
     }
 
+    public void userBoughtSongs(int userId, ArrayList<Song> songs){
+        try {
+            Statement statement = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            for (Song s: songs){
+                String inString = String.format("INSERT INTO users_has_songs VALUES ( %d , %d )", userId, s.getSongId());
+
+                statement.addBatch(inString);
+            }
+
+            statement.executeBatch();
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }
 
 
