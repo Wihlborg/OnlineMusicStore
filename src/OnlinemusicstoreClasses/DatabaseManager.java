@@ -76,7 +76,7 @@ public class DatabaseManager{
     public ArrayList<Song> getSongs(String searchTerm) {
         ArrayList<Song> songs = new ArrayList<>();
         try {
-            PreparedStatement songStatement = c.prepareStatement("SELECT songs.songname, albums.name, artists.name , songs.price FROM songs, albums, " +
+            PreparedStatement songStatement = c.prepareStatement("SELECT songs.idsongs, songs.songname, albums.name, artists.name , songs.price FROM songs, albums, " +
                     "artists WHERE songs.songname LIKE ? " +
                     "&& songs.albums_idalbums = albums.idalbums " +
                     "&& albums.artists_idartists = artists.idartists");
@@ -90,7 +90,7 @@ public class DatabaseManager{
                 songs.add(new Song(rs.getString("artists.name"),
                         rs.getString("songs.songname"),
                         rs.getString("albums.name"),
-                        new int[]{0, 0},
+                        rs.getInt("songs.idsongs"),
                         rs.getDouble("songs.price")));
             }
 
@@ -342,6 +342,8 @@ public class DatabaseManager{
         }
     }
 
+    //ADMIN METHODS END
+
     public String getEmail(String username){
         ArrayList<String>onlineusers=new ArrayList<>();
         try {
@@ -360,11 +362,26 @@ public class DatabaseManager{
         return String.valueOf(onlineusers.get(0).substring(0,onlineusers.get(0).length()));
     }
 
-    public void getBoughtSongs(int userID){
+    public ArrayList<Song> getBoughtSongs(int userID){
+        ArrayList<Song> boughtSongs = new ArrayList<>();
+        try {
+            PreparedStatement boughtSongsStatement = c.prepareStatement("select * " +
+                    "FROM songs, artists, albums, users_has_songs" +
+                    "WHERE users_has_songs.users_idusers = ?" +
+                    "AND users_has_songs.songs_idsongs = songs.idsongs" +
+                    "AND albums.idalbums = songs.albums_idalbums" +
+                    "AND artists.idartists = albums.artists_idartists;");
+            boughtSongsStatement.setInt(1, userID);
+            ResultSet rs = boughtSongsStatement.executeQuery();
+            while (rs.next()){
+                boughtSongs.add(new Song(rs.getString(7), rs.getString(2), rs.getString(10), rs.getInt(1), rs.getDouble(4)));
+            }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
 
 
-
-
+        return boughtSongs;
     }
 
 }

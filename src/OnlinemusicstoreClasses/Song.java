@@ -5,14 +5,14 @@ import java.util.Arrays;
 public class Song {
     private String artistName;
     private String songName;
-    private int[] length = new int[2];
+    private int songId;
     private String albumName;
     private double songPrice;
 
-    public Song(String artistName, String songName,  String albumName,int[] length, double songPrice) {
+    public Song(String artistName, String songName,  String albumName, int songId, double songPrice) {
         this.artistName = artistName;
         this.songName = songName;
-        this.length = length;
+        this.songId = songId;
         this.albumName = albumName;
         this.songPrice = songPrice;
     }
@@ -29,9 +29,6 @@ public class Song {
         return songName;
     }
 
-    public int[] getLength() {
-        return length;
-    }
 
     public String getAlbumName() {
         return albumName;
@@ -42,7 +39,6 @@ public class Song {
         return "Song{" +
                 "artistName='" + artistName + '\'' +
                 ", songName='" + songName + '\'' +
-                ", length=" + Arrays.toString(length) +
                 ", albumName='" + albumName + '\'' +
                 ", songPrice=" + songPrice +
                 '}';
