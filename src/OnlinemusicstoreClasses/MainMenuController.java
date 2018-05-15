@@ -1,5 +1,7 @@
 package OnlinemusicstoreClasses;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,9 +25,20 @@ public class MainMenuController implements Initializable {
     @FXML
     Button addMusicButton;
 
+    @FXML
+    TableView<String> playlistweek;
+    @FXML
+    TableColumn<Song,String> playlist;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CurrentUser cu = CurrentUser.getInstance();
+
+
+
+
+
         if (!cu.isAdmin()){
             adminButton.setVisible(false);
             if (!cu.isArtist()){

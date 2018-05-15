@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -10,12 +11,12 @@
    <children>
       <Button layoutX="389.0" layoutY="279.0" mnemonicParsing="false" onAction="#changeToLostPassword" prefHeight="38.0" prefWidth="110.0" text="Forgot Password?" />
       <TextField fx:id="UserName" layoutX="152.0" layoutY="111.0" />
-      <TextField fx:id="PassWord" layoutX="152.0" layoutY="200.0" onAction="#onEnter" />
       <Label layoutX="152.0" layoutY="94.0" prefHeight="17.0" prefWidth="83.0" text="User:" />
       <Label layoutX="152.0" layoutY="183.0" text="Password:" />
       <Button fx:id="Signin" layoutX="269.0" layoutY="279.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="38.0" prefWidth="65.0" text="Sign In" />
       <Button layoutX="153.0" layoutY="279.0" mnemonicParsing="false" onAction="#changeToCreateNewUser" prefHeight="38.0" prefWidth="65.0" text="Sign Up" />
        <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpMenuPressed" text="Help" />
+      <PasswordField fx:id="PassWord" layoutX="152.0" layoutY="210.0" onAction="#onEnter" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />
