@@ -61,19 +61,13 @@ DatabaseManager db=DatabaseManager.getInstance();
             String fromMail="onlinemusicstorev1@gmail.com";
             String password ="9x828x5w";
             String subject="Lost Password";
-<<<<<<< HEAD
-            String newPassword= UUID.randomUUID().toString();
-            System.out.println(UUID.randomUUID().toString());
-=======
             String alphabet="123xyz";
-String newPassword="";
+            String newPassword="";
 
             for (int i = 0; i < 5; i++) {
             newPassword += String.valueOf(alphabet.charAt(r.nextInt(alphabet.length())));
 
             }
-
->>>>>>> 0a633b602d8216331e04143321af680f8adf05ee
             //linka message så databasen uppdateras med nya passet.
             db.changeUsersPassword(username,newPassword);
             String host = "smtp.gmail.com";

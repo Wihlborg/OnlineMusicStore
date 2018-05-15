@@ -32,11 +32,6 @@ DatabaseManager db = DatabaseManager.getInstance();
 
     public void signInAction(javafx.event.ActionEvent event){
         boolean password=db.passwordCheck(UserName.getText().trim() , PassWord.getText().trim()); //Get a boolean from the DB to check if password is correct for the username
-   if (PassWord.getLength() > 9 ){
-       Alert alert = new Alert(Alert.AlertType.ERROR,"Your password is longer than 9 digtis");
-       alert.show();
-       PassWord.clear();
-
 
 
         if (password==true){ //if it is, go to main menu and save the current users data in a singleton class
@@ -53,7 +48,6 @@ DatabaseManager db = DatabaseManager.getInstance();
         }
    }
 
-    }
     @FXML
 public void changeToCreateNewUser(javafx.event.ActionEvent event){
     try {
