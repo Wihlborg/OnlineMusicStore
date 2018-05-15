@@ -7,8 +7,9 @@ public class ShoppingCart  {
 
 
     private static ShoppingCart instance = null;
-    private ObservableList<Song> songLinkedList;
+    private ObservableList<OnlinemusicstoreClasses.Song> songLinkedList;
     private ObservableList<Album>albumLinkedList;
+    private ObservableList<OnlinemusicstoreClasses.Song> boughtSong;
 
 
 
@@ -16,6 +17,7 @@ public class ShoppingCart  {
     private ShoppingCart() {
         songLinkedList =  FXCollections.observableArrayList();
         albumLinkedList = FXCollections.observableArrayList();
+        boughtSong=FXCollections.observableArrayList();
 
     }
 
@@ -34,6 +36,14 @@ public class ShoppingCart  {
 
     public ObservableList<Song> getSongLinkedList() {
         return songLinkedList;
+    }
+
+    public void addBoughtSong(Song song){
+        boughtSong.add(song);
+    }
+
+    public ObservableList<Song> getBoughtSong() {
+        return boughtSong;
     }
 
 }

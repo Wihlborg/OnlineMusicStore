@@ -360,8 +360,11 @@ public class DatabaseManager{
         return String.valueOf(onlineusers.get(0).substring(0,onlineusers.get(0).length()));
     }
 
-    public void oskarGillarBananaer(){
-        System.out.println("Höhöhö");
+    public void getBoughtSongs(int userID){
+
+
+
+
     }
 
 }

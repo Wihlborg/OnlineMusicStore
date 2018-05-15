@@ -198,10 +198,6 @@ for (Song song : songs){
                 Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
                 correctWorked.show();
 
-                PlaylistController playlistController=new PlaylistController();
-
-
-    //            playlistController.showPlaylist();
 
 
 

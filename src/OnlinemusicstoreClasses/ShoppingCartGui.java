@@ -95,7 +95,7 @@ public class ShoppingCartGui implements Initializable{
             Alert alert=new Alert(Alert.AlertType.ERROR,"You dont have items in your shoppingcart");
             alert.show();
         }
-        else if (!songs.isEmpty()){
+
 
 
 
@@ -120,7 +120,8 @@ public class ShoppingCartGui implements Initializable{
         }
 
 
-        }
+
+
 
 
 
