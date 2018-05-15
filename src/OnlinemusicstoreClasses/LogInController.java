@@ -31,6 +31,10 @@ public class LogInController {
 DatabaseManager db = DatabaseManager.getInstance();
 
     public void signInAction(javafx.event.ActionEvent event){
+        if (UserName.getText().trim().isEmpty() || PassWord.getText().trim().isEmpty()){
+            return;
+        }
+
         boolean password=db.passwordCheck(UserName.getText().trim() , PassWord.getText().trim()); //Get a boolean from the DB to check if password is correct for the username
 
 
