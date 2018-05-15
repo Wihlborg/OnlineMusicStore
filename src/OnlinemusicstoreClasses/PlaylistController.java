@@ -129,18 +129,20 @@ public class PlaylistController implements Initializable {
 
     public void playSong(ActionEvent event){
         Song songToPlay = tableAdded.getSelectionModel().getSelectedItem();
-        try {
-            db.getMusicFile(songToPlay.getSongId());
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("song.wav"));
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioIn);
-            clip.start();
-        } catch (UnsupportedAudioFileException ex){
-            System.out.println("File not found");
-        } catch (IOException ex){
-            ex.printStackTrace();
-        } catch (LineUnavailableException lex){
-            lex.printStackTrace();
+        if (songToPlay != null) {
+            try {
+                db.getMusicFile(songToPlay.getSongId());
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("song.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                clip.start();
+            } catch (UnsupportedAudioFileException ex) {
+                System.out.println("File not found");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (LineUnavailableException lex) {
+                lex.printStackTrace();
+            }
         }
     }
 public void deletePlaylist(ActionEvent event){
