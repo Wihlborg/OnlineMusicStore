@@ -194,7 +194,9 @@ for (Song song : songs){
 
             if (confirmed==true){
 
+                db.userBoughtSongs(user.getUserId(), songs);
 
+                ShoppingCart.getInstance().clear();
                 Alert correctWorked= new Alert(Alert.AlertType.CONFIRMATION,"SUCCESFUL,Payment ACCEPTED");
                 correctWorked.show();
 

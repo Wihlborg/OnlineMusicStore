@@ -46,6 +46,10 @@ public class ShoppingCart  {
         return boughtSong;
     }
 
+    public void clear(){
+        this.songLinkedList.clear();
+        this.albumLinkedList.clear();
+    }
 }
 
 

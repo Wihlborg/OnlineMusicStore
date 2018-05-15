@@ -1,6 +1,8 @@
 
 package OnlinemusicstoreClasses;
 
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -383,7 +385,7 @@ public class DatabaseManager{
         return boughtSongs;
     }
 
-    public void userBoughtSongs(int userId, ArrayList<Song> songs){
+    public void userBoughtSongs(int userId, ObservableList<Song> songs){
         try {
             Statement statement = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             for (Song s: songs){
