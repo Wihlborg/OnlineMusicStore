@@ -203,11 +203,15 @@ public class DatabaseManager{
                 getBlobStatement.setInt(1, songId);
                 ResultSet rs = getBlobStatement.executeQuery();
                 while (rs.next()){
+                    //download the musicfile and convert it into a File if it isn't null
                     Blob ablob = rs.getBlob(1);
+                    if(ablob == null){
+                        throw new IOException();
+                    }
                     InputStream is = ablob.getBinaryStream();
                     FileOutputStream fos = new FileOutputStream(fileToReturn);
 
-                    byte[] buff = new byte[16777215];
+                    byte[] buff = new byte[16777215]; //max size of BLOB in DB
                     for (int b = is.read(buff); b != -1; b = is.read(buff)) {
                         fos.write(buff, 0, b);
                     }
@@ -386,6 +390,7 @@ public class DatabaseManager{
     }
 
     public void userBoughtSongs(int userId, ObservableList<Song> songs){
+        //Using batch to execute several statements without waiting for network delay
         try {
             Statement statement = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             for (Song s: songs){

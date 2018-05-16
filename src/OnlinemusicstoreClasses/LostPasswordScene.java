@@ -62,13 +62,12 @@ DatabaseManager db=DatabaseManager.getInstance();
             String password ="9x828x5w";
             String subject="Lost Password";
             String alphabet="123xyz";
-String newPassword="";
+            String newPassword="";
 
             for (int i = 0; i < 5; i++) {
             newPassword += String.valueOf(alphabet.charAt(r.nextInt(alphabet.length())));
 
             }
-
             //linka message så databasen uppdateras med nya passet.
             db.changeUsersPassword(username,newPassword);
             String host = "smtp.gmail.com";
