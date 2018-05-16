@@ -43,7 +43,7 @@ public class ShowAccountData {
     Alert wrongFormatAlert = new Alert(Alert.AlertType.ERROR, "Enter a new e-mail");
     Alert fileNotFoundAlert = new Alert(Alert.AlertType.ERROR, "Enter new password");
 
-
+/*
     @FXML
     private void setPassword(ActionEvent event){
         password password = Password.getSelectionModel().getSelectedItem();
@@ -60,7 +60,9 @@ public class ShowAccountData {
             return;
         }
     }
+    /*
 
+     */
 
     @FXML
     private void ChangeToMainMenu(ActionEvent event) throws IOException {
