@@ -179,9 +179,9 @@ public class ArtistController implements Initializable{
     @FXML
     void helpMenuPressed(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText("Look, an Information Dialog");
-        alert.setContentText("I have a great message for you!");
+        alert.setTitle("Artists");
+        alert.setHeaderText("Information about artists");
+        alert.setContentText("As an artist you can add your own music. ");
 
         alert.showAndWait();
 

@@ -181,7 +181,7 @@ public class CheckoutController implements Initializable{
                 "\n\n"+"Album: "+album+"\t"+"Artist: "+artist+"\n"+"Songname: " +
                 ""+names+"\n";
             }
-            
+
             message += "\n\n Total cost: " + price;
 
             messageCheckout.setText(message);

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -154,6 +155,17 @@ public void clearPlaylist(ActionEvent event){
     tableAdded.requestFocus();
     tableAdded.getItems().clear();
 
+
+    }
+    @FXML
+    void helpMenuPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information about searching");
+        alert.setHeaderText("Searching");
+        alert.setContentText("Here you can search for songs which you can add to your cart. Simply double-click" +
+                "on whichever song you want to add to your cart.");
+
+        alert.showAndWait();
 
     }
 }
