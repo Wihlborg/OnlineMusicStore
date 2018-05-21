@@ -429,6 +429,54 @@ public class DatabaseManager{
         return lastTenSongs;
 
     }
+    public void changeEmail(String username) {
+        try {
+            PreparedStatement createStatement = c.prepareStatement("SELECT email FROM users WHERE users.username = ?;");
+            createStatement.setString(1, username);
+            createStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public boolean emailCheck(String username, String email,String seq){
+
+        try {
+            PreparedStatement checkStatement = c.prepareStatement("SELECT * FROM users WHERE username= ?;");
+            checkStatement.setString(1, username);
+            ResultSet rs = checkStatement.executeQuery();
+            while (rs.next()){
+                if (rs.getString("email").equals(email) &&rs.getString("securityanswer").equals(seq) ){
+                    return true;
+
+                }
+
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+
+        }
+        return false;
+    }
+    public void changeUsersEmail(String user,String email) {
+        try {
+            PreparedStatement createStatement = c.prepareStatement("UPDATE users SET email = ? WHERE username = ?;");
+            createStatement.setString(1, email);
+            createStatement.setString(2, user);
+            createStatement.executeUpdate();
+
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
 
 

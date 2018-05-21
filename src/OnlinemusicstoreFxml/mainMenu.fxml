@@ -37,6 +37,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
+      <Button layoutX="437.0" layoutY="-1.0" mnemonicParsing="false" onAction="#changetoaccountsettings" text="Settings" />
 
    </children>
    <stylesheets>

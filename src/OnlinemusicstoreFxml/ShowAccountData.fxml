@@ -18,20 +18,22 @@
                 <Glow level="1.0" />
             </effect></Label>
       <Button layoutX="86.0" layoutY="305.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="25.0" prefWidth="143.0" text="Change password" />
-      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#changeToMainMenu" text="Back to Main Menu" />
+      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#changetomainmenu" text="Back to Main Menu" />
       <Button layoutX="387.0" layoutY="305.0" mnemonicParsing="false" onAction="#changeEmail" prefHeight="25.0" prefWidth="125.0" text="Change E-mail" />
-      <TextField fx:id="usernameforChP" layoutX="83.0" layoutY="156.0" />
-      <TextField fx:id="emailforChP" layoutX="83.0" layoutY="216.0" />
-      <TextField fx:id="usernameForChangeemail" layoutX="375.0" layoutY="156.0" />
-      <TextField fx:id="passforChemail" layoutX="375.0" layoutY="216.0" />
-      <Label layoutX="133.0" layoutY="131.0" text="Username:" />
-      <Label layoutX="422.0" layoutY="131.0" prefHeight="0.0" prefWidth="56.0" text="Username:" />
-      <Label layoutX="130.0" layoutY="200.0" text="Email:" />
-      <Label layoutX="425.0" layoutY="200.0" text="Password" />
-      <TextField fx:id="sq" layoutX="230.0" layoutY="293.0" />
-      <Label layoutX="295.0" layoutY="269.0" text="SQ:" />
-      <TextField fx:id="changepass" layoutX="83.0" layoutY="265.0" />
-      <Label layoutX="130.0" layoutY="248.0" text="New Password:" />
+      <TextField fx:id="usernameforChP" layoutX="83.0" layoutY="127.0" />
+      <TextField fx:id="emailforChP" layoutX="83.0" layoutY="188.0" />
+      <TextField fx:id="usernameForChangeemail" layoutX="375.0" layoutY="127.0" />
+      <TextField fx:id="passforChemail" layoutX="375.0" layoutY="188.0" />
+      <Label layoutX="133.0" layoutY="103.0" text="Username:" />
+      <Label layoutX="422.0" layoutY="103.0" prefHeight="0.0" prefWidth="56.0" text="Username:" />
+      <Label layoutX="142.0" layoutY="165.0" text="Email:" />
+      <Label layoutX="426.0" layoutY="165.0" text="Password" />
+      <TextField fx:id="sq" layoutX="230.0" layoutY="278.0" />
+      <Label layoutX="295.0" layoutY="262.0" text="SQ:" />
+      <TextField fx:id="changepass" layoutX="87.0" layoutY="237.0" />
+      <Label layoutX="121.0" layoutY="220.0" text="New Password:" />
+      <TextField fx:id="changeEmail" layoutX="376.0" layoutY="237.0" />
+      <Label layoutX="426.0" layoutY="220.0" text="New Email:" />
 
     </children>
     <stylesheets>
