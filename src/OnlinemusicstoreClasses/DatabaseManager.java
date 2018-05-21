@@ -400,6 +400,30 @@ public class DatabaseManager{
             ex.printStackTrace();
         }
     }
+    public ArrayList<Song> weekPlaylist(){
+        ArrayList<Song> lastTenSongs = new ArrayList<>();
+
+        try {
+            PreparedStatement lastTenSongsStatement = c.prepareStatement("SELECT songs.idsongs, songs.songname, albums.name, artists.name , songs.price FROM songs, albums, artists"+
+                            " WHERE songs.albums_idalbums = albums.idalbums"+
+                            "&& albums.artists_idartists = artists.idartists ORDER BY idsongs DESC LIMIT 10");
+
+            ResultSet rs = lastTenSongsStatement.executeQuery();
+            while (rs.next()){
+                lastTenSongs.add((new Song(rs.getString("artists.name"),
+                        rs.getString("songs.songname"),
+                        rs.getString("albums.name"),
+                        rs.getInt("songs.idsongs"),
+                        rs.getDouble("songs.price"))));
+
+            }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return lastTenSongs;
+
+    }
 }
 
 

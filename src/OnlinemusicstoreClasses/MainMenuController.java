@@ -13,10 +13,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
@@ -26,16 +28,34 @@ public class MainMenuController implements Initializable {
     Button addMusicButton;
 
     @FXML
-    TableView<String> playlistweek;
+    TableView<Song> playlistWeek;
     @FXML
-    TableColumn<Song,String> playlist;
+    TableColumn<Song, String> columnSong;
+    @FXML
+    TableColumn<Song, String> columnArtist;
+    @FXML
+    TableColumn<Song, String> columnAlbum;
+
+    DatabaseManager db = DatabaseManager.getInstance();
+
+    ObservableList<Song> playlistSongs = FXCollections.observableArrayList(db.weekPlaylist());
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         CurrentUser cu = CurrentUser.getInstance();
 
+        columnSong.setText("Song");
+        columnAlbum.setText("Album");
+        columnArtist.setText("Artist");
 
+        columnSong.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+        columnArtist.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+        columnAlbum.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+
+
+
+        playlistWeek.setItems(playlistSongs);
 
 
 
