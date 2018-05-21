@@ -14,7 +14,7 @@
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#changetoMainmenu" text="Main Menu" />
       <Button layoutX="553.0" layoutY="325.0" mnemonicParsing="false" onAction="#playSong" text="Play" />
       <Button layoutX="474.0" layoutY="325.0" mnemonicParsing="false" onAction="#deletePlaylist" text="Remove" />
-       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" text="Help" />
+       <Button layoutX="503.0" layoutY="-1.0" mnemonicParsing="false" onAction="#helpButtonPressed" text="Help" />
       <TableView fx:id="StartTable" layoutY="23.0" prefHeight="140.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="Song" prefWidth="200" text="C1" />
