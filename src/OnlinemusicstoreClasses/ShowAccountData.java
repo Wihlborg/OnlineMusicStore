@@ -1,104 +1,70 @@
 package OnlinemusicstoreClasses;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-public class ShowAccountData {
+public class ShowAccountData  {
+    @FXML TextField usernameforChP;
+    @FXML TextField emailforChP;
+    @FXML TextField usernameForChangeemail;
+    @FXML TextField passforChemail;
+    @FXML TextField sq;
+    @FXML TextField changepass;
+
 
     DatabaseManager db = DatabaseManager.getInstance();
-    CurrentUser cu = CurrentUser.getInstance();
 
 
-    @FXML
-    private TableView<?> usersTableView;
+@FXML
+public void changeEmail(ActionEvent event){
 
-    @FXML
-    private TableColumn<?, ?> password;
+if (usernameForChangeemail.getText().isEmpty() || passforChemail.getText().isEmpty()){
+        Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
+        emptyAlert.show();
 
-    @FXML
-    private TableColumn<?, ?> emailColumn;
+    } else {
+        String userNameLostPassword =usernameForChangeemail.getText();
+        String emailLostPasswordText = emailforChP.getText();
+        String seq = sq.getText();
 
-    @FXML
-    private Button changePassword;
+    }
+}
 
-    @FXML
-    private Button changeEmail;
+    String username= usernameForChangeemail.getText();
+    String password=passforChemail.getText();
+    String sqemail=sq.getText();
 
 
-    Alert wrongFormatAlert = new Alert(Alert.AlertType.ERROR, "Enter a new e-mail");
-    Alert fileNotFoundAlert = new Alert(Alert.AlertType.ERROR, "Enter new password");
 
-/*
-    @FXML
-    private void setPassword(ActionEvent event){
-        password password = Password.getSelectionModel().getSelectedItem();
-        db.set(password.);
+
+@FXML
+public void changePassword(ActionEvent event) {
+    if (usernameforChP.getText().isEmpty() || emailforChP.getText().isEmpty()) {
+        Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
+        emptyAlert.show();
 
     }
 
-
-    @FXML
-    public void setEmailColumn(ActionEvent event) {
-
-        if (emailColumn.getText().trim().isEmpty() || emailColumn.getText().trim().isEmpty()) {
-            emailColumn.show();
-            return;
-        }
-    }
-    /*
-
-     */
-
-    @FXML
-    private void ChangeToMainMenu(ActionEvent event) throws IOException {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+else{
+    boolean checkifcorrect;
+    String usernamePass=usernameforChP.getText();
+    String email=emailforChP.getText();
+    String sqpass=sq.getText();
+     checkifcorrect = db.checkUsername(usernamePass,email,sqpass);
+if (checkifcorrect==true){
+    String changePassword=changepass.getText();
+    db.changeUsersPassword(usernamePass,changePassword);
+}
+else {
+    Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
+    emptyAlert.show();
 
 
-    }
 
+}
+}
 
-    @FXML
-    void logOut(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-        } catch (NullPointerException ne) {
-
-            ne.getSuppressed();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-    }
+}
 }
