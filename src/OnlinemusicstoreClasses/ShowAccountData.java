@@ -38,11 +38,12 @@ if (usernameForChangeemail.getText().isEmpty() || passforChemail.getText().isEmp
         String seq = sq.getText();
     boolean check=db.emailCheck(userNameLostPassword,emailLostPasswordText,seq);
         if(check==true){
-
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You have now changed ur Email");
+            alert.show();
 
        String email=changeEmail.getText();
 db.changeUsersEmail(userNameLostPassword,email);
-
+            changetologin(event);
 
     }
 
@@ -65,6 +66,9 @@ public void changePassword(ActionEvent event) {
         if (checkifcorrect == true) {
             String changePassword = changepass.getText();
             db.changeUsersPassword(usernamePass, changePassword);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You have now changed ur password");
+            alert.show();
+            changetologin(event);
         } else {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
@@ -94,6 +98,28 @@ public void changePassword(ActionEvent event) {
 
         }
     }
+    public void changetologin(javafx.event.ActionEvent event){
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/sample.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+        } catch (NullPointerException ne){
+
+            ne.getSuppressed();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+}
 }
 
 

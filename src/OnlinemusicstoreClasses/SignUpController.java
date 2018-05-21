@@ -33,6 +33,7 @@ public class SignUpController {
         if (Account.getText().isEmpty() || Password.getText().isEmpty() || Password.getLength() > 9) {
             Alert emptyAlert = new Alert(Alert.AlertType.ERROR, "Field must not be empty");
             emptyAlert.show();
+        }
             if (Password.getLength() > 9) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Your password is longer than 9 digtis");
                 alert.show();
@@ -49,7 +50,7 @@ public class SignUpController {
                 c2.changeToLogin(event);
             }
 
-        }
+
     }
         @FXML
         public void changeToLogin (ActionEvent event){
