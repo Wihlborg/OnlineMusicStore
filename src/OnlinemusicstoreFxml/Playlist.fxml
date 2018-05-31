@@ -30,6 +30,7 @@
         </columns>
       </TableView>
       <Button layoutX="407.0" layoutY="325.0" mnemonicParsing="false" onAction="#clearPlaylist" text="Clear" />
+      <Button layoutX="312.0" layoutY="325.0" mnemonicParsing="false" onAction="#showHistory" text="Show History" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />

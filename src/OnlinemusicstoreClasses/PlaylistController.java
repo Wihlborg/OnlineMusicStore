@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -25,6 +22,10 @@ import java.util.ResourceBundle;
 
 public class PlaylistController implements Initializable {
     DatabaseManager db = DatabaseManager.getInstance();
+
+    @FXML
+    private Button showHistory;
+
     @FXML
     private TableView<Song> StartTable;
      @FXML
@@ -45,7 +46,7 @@ public class PlaylistController implements Initializable {
     CurrentUser cu = CurrentUser.getInstance();
     private ObservableList<Song> boughtSongs = FXCollections.observableArrayList(db.getBoughtSongs(cu.getUserId()));;
 
-    public void changetoMainmenu(javafx.event.ActionEvent event){
+    public void changetoMainmenu(javafx.event.ActionEvent event) {
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -56,7 +57,7 @@ public class PlaylistController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
-        } catch (NullPointerException ne){
+        } catch (NullPointerException ne) {
 
             ne.getSuppressed();
 
@@ -65,6 +66,19 @@ public class PlaylistController implements Initializable {
             e.printStackTrace();
 
         }
+    }
+
+        public void showHistory(ActionEvent event) {
+            try {
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/orderhistory.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
     }
 
 

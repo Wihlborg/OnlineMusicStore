@@ -477,6 +477,34 @@ public class DatabaseManager{
 
     }
 
+    public ArrayList<String> getOrderHistory(){
+        ArrayList<String> history = new ArrayList<>();
+        try {
+            Statement statement = c.createStatement(); // kommer ut : dateoforder, username, idreciept, songname
+            String sql = "select  dateoforder,users.username,idreciept,songs.songname from orders inner join users on users_idusers=users.idusers \n" +
+                    "inner join orders_has_songs on reciept_idreciept=orders.idreciept inner join songs on songs_idsongs=songs.idsongs;";
+            ResultSet rs = statement.executeQuery(sql);
+
+
+            while (rs.next()){
+                System.out.println("add row");
+                history.add("Date: " + rs.getDate("dateoforder") +
+                        " username: " + rs.getString("username") +
+                        " Kvittonummer: " + rs.getInt("idreciept") +
+                        " song: " + rs.getString("songname") );
+            }
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
+        for (String s: history){
+            System.out.println(s);
+        }
+
+        return history;
+    }
+
 }
 
 
