@@ -39,7 +39,7 @@ public class Orderhistorik implements Initializable {
 
     }
 
-    public void showHistory(MouseEvent event) {
+    public void showHistory(ActionEvent event) {
 
         try {
             ArrayList<String> history = DatabaseManager.getInstance().getOrderHistory();
@@ -47,7 +47,6 @@ public class Orderhistorik implements Initializable {
             for (String s : history) {
                 orderhistoryTA.appendText(s + "\n\r");
             }
-
 
         } catch (NullPointerException ne) {
 
@@ -65,11 +64,24 @@ public class Orderhistorik implements Initializable {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
+
         } catch (Exception e){
+
             e.printStackTrace();
+
         }
     }
+    @FXML
+    void helpMenuPressed (ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("History");
+        alert.setHeaderText("Information about your history");
+        alert.setContentText("Something went wrong please restart the application");
 
+        alert.showAndWait();
 
+    }
 }
+
 

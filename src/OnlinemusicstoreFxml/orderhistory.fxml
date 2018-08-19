@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.Orderhistorik">
    <children>
       <Button layoutX="417.0" layoutY="306.0" mnemonicParsing="false" onAction="#backBtn" text="&lt;&lt; Go back" />
-      <Button layoutX="139.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#showHistory" text="Show orderhistory" />
+      <Button layoutX="139.0" layoutY="306.0" mnemonicParsing="false" onAction="#showHistory" text="Show orderhistory" />
       <TextArea fx:id="orderhistoryTA" layoutX="66.0" layoutY="60.0" prefHeight="197.0" prefWidth="456.0" />
    </children>
 </AnchorPane>
