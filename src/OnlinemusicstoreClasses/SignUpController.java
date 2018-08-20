@@ -73,6 +73,7 @@ public class SignUpController {
 
             }
         }
+
         @FXML
         void helpMenuPressed (ActionEvent event){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

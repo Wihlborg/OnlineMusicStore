@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -52,6 +53,12 @@ public class Orderhistorik implements Initializable {
 
             ne.getSuppressed();
 
+        } catch (SQLException sqlEX) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("History");
+            alert.setHeaderText("Information about your history");
+            alert.setContentText("Something went wrong please restart the application");
+            alert.showAndWait();
         }
     }
 
@@ -62,24 +69,16 @@ public class Orderhistorik implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/Playlist.fxml"));
             Parent root = loader.load();
+            /*SearchController searchController = loader.getController();
+            searchController.search("hello");   task 3 exam*/
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
-
         }
-    }
-    @FXML
-    void helpMenuPressed (ActionEvent event){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("History");
-        alert.setHeaderText("Information about your history");
-        alert.setContentText("Something went wrong please restart the application");
-
-        alert.showAndWait();
 
     }
 }
