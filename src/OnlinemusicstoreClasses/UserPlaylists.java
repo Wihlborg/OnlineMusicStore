@@ -7,12 +7,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserPlaylists implements Initializable {
+    @FXML
+    private TableColumn<?, ?> playlistNameColumn;
+
+    @FXML
+    private TableColumn<?, ?> songColumn;
+
+    @FXML
+    private TableColumn<?, ?> artistColumn;
+
+    @FXML
+    private TableColumn<?, ?> albumColumn;
+
 
 
     @Override

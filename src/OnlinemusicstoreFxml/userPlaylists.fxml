@@ -8,15 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.UserPlaylists">
    <children>
       <VBox layoutY="61.0" prefHeight="215.0" prefWidth="203.0">
          <children>
             <TableView prefHeight="215.0" prefWidth="189.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="playlistNameColumn" prefWidth="202.0" text="C1" />
               </columns>
             </TableView>
          </children>
@@ -25,8 +23,9 @@
          <children>
             <TableView prefHeight="215.0" prefWidth="498.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="songColumn" prefWidth="142.0" text="C1" />
+                <TableColumn fx:id="artistColumn" prefWidth="145.0" text="C2" />
+                  <TableColumn fx:id="albumColumn" prefWidth="148.0" text="C3" />
               </columns>
             </TableView>
          </children>
