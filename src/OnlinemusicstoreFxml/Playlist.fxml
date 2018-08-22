@@ -31,6 +31,8 @@
       </TableView>
       <Button layoutX="407.0" layoutY="325.0" mnemonicParsing="false" onAction="#clearPlaylist" text="Clear" />
       <Button layoutX="312.0" layoutY="325.0" mnemonicParsing="false" onAction="#showHistory" text="Show History" />
+      <Button layoutX="126.0" layoutY="325.0" mnemonicParsing="false" onAction="#viewPlaylists" text="View playlists" />
+      <Button layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#createPlaylist" text="Create playlist" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />

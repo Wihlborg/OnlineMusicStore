@@ -182,4 +182,25 @@ public void clearPlaylist(ActionEvent event){
         alert.showAndWait();
 
     }
+
+    @FXML
+    void createPlaylist(ActionEvent event) {
+
+    }
+
+    @FXML
+    void viewPlaylists(ActionEvent event) {
+        try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../OnlinemusicstoreFxml/userPlaylists.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 }
