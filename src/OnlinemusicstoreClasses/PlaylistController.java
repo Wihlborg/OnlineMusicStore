@@ -182,9 +182,12 @@ public void clearPlaylist(ActionEvent event){
         alert.showAndWait();
 
     }
-
+    //created by jimmie
     @FXML
     void createPlaylist(ActionEvent event) {
+        PlaylistSingleton pS = PlaylistSingleton.getInstance();
+        pS.setPlaylist(playlistSongs);
+
 
     }
 
