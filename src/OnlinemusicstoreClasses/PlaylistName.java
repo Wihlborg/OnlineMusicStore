@@ -7,12 +7,12 @@ public class PlaylistName {
     private HashMap<Integer, Song> playlist;
 
     public PlaylistName(int playlistNumber) {
-        this.playlistNumber = "Playlist "+Integer.toString(playlistNumber);
+        this.playlistNumber = Integer.toString(playlistNumber);
 
     }
 
-    public String getPlaylistNumber() {
-        return playlistNumber;
+    public int getPlaylistNumber() {
+        return Integer.parseInt(playlistNumber);
     }
 
     public void setPlaylistNumber(String playlistNumber) {

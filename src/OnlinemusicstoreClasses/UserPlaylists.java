@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,6 +56,9 @@ public class UserPlaylists implements Initializable {
         artistColumn.setText("Artist");
         albumColumn.setText("Album");
 
+        setPlaylists();
+        addToPlaylist();
+
 
         songColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
@@ -67,6 +71,7 @@ public class UserPlaylists implements Initializable {
         }
 
         System.out.println(songss);
+
 
 
      //   for (int i = 0; i<playlist.size(); i++){
@@ -113,9 +118,55 @@ public class UserPlaylists implements Initializable {
         PlaylistSingleton pS = PlaylistSingleton.getInstance();
         playlist = pS.getPlaylist();
 
-        setPlaylists();
+        System.out.println(playlist);
+
+    }
+
+    @FXML
+    public void addToPlaylist(){
 
 
+        playlistTableView.setOnMouseClicked(event -> {
+            int index = playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1;
+            System.out.println(playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1);
+            playlistSongsTableView.setItems(playlist.get(index));
+            System.out.println(playlist.get(index));
+        });
+
+     /*   playlistTableView.setRowFactory( tableView -> {
+            TableRow<PlaylistName> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Integer rowData = row.getIndex();
+                    System.out.println(rowData);
+
+                    boolean songIsInList = false;
+
+
+                    for (int i = 0; i < playlist.size(); i++){
+                        if (playlist.containsKey(rowData)){
+                            songIsInList = true;
+                            playlistSongsTableView.setItems(playlist.get(rowData));
+                            songColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
+                           artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
+                           albumColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
+
+                           //break;
+
+                            System.out.println(playlist.get(rowData));
+                        }
+                    }
+                //    if (!songIsInList){
+                //        playlistSongs.add(rowData);
+                  //  }
+                }
+
+            });
+            return row;
+        });
+*/
 
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlaylistSingleton {
-    private ObservableList<Song> songs = FXCollections.observableArrayList();
+    //private ObservableList<Song> songs = FXCollections.observableArrayList();
     private  HashMap<Integer,ObservableList<Song>> playlist = new HashMap<>();
     private static int playlistNum = 0;
 
@@ -26,11 +26,9 @@ public class PlaylistSingleton {
 
     public void setPlaylist(ObservableList<Song> songs) {
          playlist.put(playlistNum, songs);
-         incrementPlaylist();
+         playlistNum++;
         }
 
-        public void incrementPlaylist(){
-        playlistNum++;
-        }
+
     }
 

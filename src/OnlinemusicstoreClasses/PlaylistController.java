@@ -17,6 +17,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -185,14 +186,33 @@ public void clearPlaylist(ActionEvent event){
     //created by jimmie
     @FXML
     void createPlaylist(ActionEvent event) {
-        PlaylistSingleton pS = PlaylistSingleton.getInstance();
-        pS.setPlaylist(playlistSongs);
 
+        ObservableList<Song> songsBajs = FXCollections.observableArrayList();
+        songsBajs = tableAdded.getItems();
+        PlaylistSingleton pS = PlaylistSingleton.getInstance();
+
+
+        ArrayList<Song> sonsss = new ArrayList<>(tableAdded.getItems());
+
+        ObservableList<Song> ss = FXCollections.observableArrayList(sonsss);
+
+        if (songsBajs.size()==0)
+        System.out.println("Observable: "+songsBajs);
+        if (sonsss.size()>0) {
+
+            pS.setPlaylist(ss);
+            sonsss.clear();
+            tableAdded.getItems().clear();
+            System.out.println("Song added to playlist"+songsBajs);
+
+        }
 
     }
 
     @FXML
     void viewPlaylists(ActionEvent event) {
+        PlaylistSingleton playlistSingleton = PlaylistSingleton.getInstance();
+
         try {
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
@@ -204,6 +224,7 @@ public void clearPlaylist(ActionEvent event){
             e.printStackTrace();
         }
 
+        //System.out.println(playlistSingleton.getPlaylist());
     }
 
 }
