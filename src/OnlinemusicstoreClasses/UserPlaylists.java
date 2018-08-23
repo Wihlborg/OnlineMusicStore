@@ -42,7 +42,7 @@ public class UserPlaylists implements Initializable {
     private ObservableList<Song> songs = FXCollections.observableArrayList();
     private ObservableList<PlaylistName> playlistName = FXCollections.observableArrayList();
     private HashMap<Integer, ObservableList<Song>> playlist = new HashMap<>();
-    private List<Song> songss =new ArrayList<>();
+   // private List<Song> songss =new ArrayList<>();
 
 
 
@@ -70,7 +70,7 @@ public class UserPlaylists implements Initializable {
 
         }
 
-        System.out.println(songss);
+       // System.out.println(songss);
 
 
 
@@ -99,7 +99,8 @@ public class UserPlaylists implements Initializable {
         }
 
     }
-
+    // this method adds numbers to the playlist table view so users can press this numbers and get the corresponding
+    //playlist.
     public void setPlaylists(){
         PlaylistSingleton pS = PlaylistSingleton.getInstance();
         playlist = pS.getPlaylist();
@@ -125,7 +126,8 @@ public class UserPlaylists implements Initializable {
     @FXML
     public void addToPlaylist(){
 
-
+        //get row index when user clicks a row, use that row index as a key value to the HashMap objects in the playlist
+        //observable list. Populate the song tableview with that hashmap object
         playlistTableView.setOnMouseClicked(event -> {
             int index = playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1;
             System.out.println(playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1);

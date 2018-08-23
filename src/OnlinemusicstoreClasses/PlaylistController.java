@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 
@@ -187,23 +188,30 @@ public void clearPlaylist(ActionEvent event){
     @FXML
     void createPlaylist(ActionEvent event) {
 
-        ObservableList<Song> songsBajs = FXCollections.observableArrayList();
-        songsBajs = tableAdded.getItems();
+        ObservableList<Song> songsObs = FXCollections.observableArrayList();
+        songsObs = tableAdded.getItems();
         PlaylistSingleton pS = PlaylistSingleton.getInstance();
 
-
+        //This array was neccessary because otherwise the songs would get lost when clearing the playlisttableview.
         ArrayList<Song> sonsss = new ArrayList<>(tableAdded.getItems());
 
+        //a conversion from the sonss arraylist was also necessary as an observable arraylist is sent as an argument
+        //to the setItems() method in the playlistSingleton.
         ObservableList<Song> ss = FXCollections.observableArrayList(sonsss);
 
-        if (songsBajs.size()==0)
-        System.out.println("Observable: "+songsBajs);
+        if (sonsss.size()==0) {
+            System.out.println("Observable: " + songsObs);
+            Alert alertBox = new Alert(Alert.AlertType.INFORMATION);
+            alertBox.setHeaderText("Error");
+            alertBox.setContentText("You must choose some songs before creating a playlist");
+            alertBox.showAndWait();
+        }
         if (sonsss.size()>0) {
 
             pS.setPlaylist(ss);
             sonsss.clear();
             tableAdded.getItems().clear();
-            System.out.println("Song added to playlist"+songsBajs);
+            System.out.println("Song added to playlist"+songsObs);
 
         }
 
