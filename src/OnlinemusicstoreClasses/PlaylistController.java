@@ -112,6 +112,7 @@ public class PlaylistController implements Initializable {
 
 
     }
+    //checks if the selected song is in the playlist table. If it is dont add to playlistSongs. If it itsnt add to playlistSongs.
     @FXML
     public void addToPlaylist(){
         StartTable.setRowFactory( tableView -> {
@@ -192,7 +193,9 @@ public void clearPlaylist(ActionEvent event){
         songsObs = tableAdded.getItems();
         PlaylistSingleton pS = PlaylistSingleton.getInstance();
 
-        //This array was neccessary because otherwise the songs would get lost when clearing the playlisttableview.
+
+
+        //This array was neccessary because otherwise the songs would get lost when clearing the playlistTableView.
         ArrayList<Song> sonsss = new ArrayList<>(tableAdded.getItems());
 
         //a conversion from the sonss arraylist was also necessary as an observable arraylist is sent as an argument
@@ -200,18 +203,24 @@ public void clearPlaylist(ActionEvent event){
         ObservableList<Song> ss = FXCollections.observableArrayList(sonsss);
 
         if (sonsss.size()==0) {
-            System.out.println("Observable: " + songsObs);
+            System.out.println("Observable: " + ss);
             Alert alertBox = new Alert(Alert.AlertType.INFORMATION);
             alertBox.setHeaderText("Error");
             alertBox.setContentText("You must choose some songs before creating a playlist");
             alertBox.showAndWait();
         }
+        //if arraylist is not empty (there are items in the playlistTableView) send the observable arraylist to playlist singleton
         if (sonsss.size()>0) {
 
             pS.setPlaylist(ss);
+            System.out.println("Song added to playlist"+sonsss);
+            System.out.println("ss Observable list before deletion: "+songsObs);
             sonsss.clear();
+
             tableAdded.getItems().clear();
-            System.out.println("Song added to playlist"+songsObs);
+            System.out.println("ss Observable list after deletion deletion: "+songsObs);
+
+
 
         }
 

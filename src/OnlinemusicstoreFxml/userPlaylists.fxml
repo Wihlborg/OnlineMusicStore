@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -8,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OnlinemusicstoreClasses.UserPlaylists">
    <children>
       <VBox layoutY="61.0" prefHeight="215.0" prefWidth="203.0">
@@ -34,7 +34,6 @@
       <Label layoutX="81.0" layoutY="33.0" text="Playlists" />
       <Label layoutX="388.0" layoutY="33.0" text="Playlist songs" />
       <Button layoutX="537.0" layoutY="337.0" mnemonicParsing="false" onAction="#goBack" text="Go back --&gt;" />
-      <Button layoutX="52.0" layoutY="292.0" mnemonicParsing="false" onAction="#removePlaylist" text="Remove playlist" />
    </children>
     <stylesheets>
         <URL value="@../OnlinemusicstoreClasses/style.css" />

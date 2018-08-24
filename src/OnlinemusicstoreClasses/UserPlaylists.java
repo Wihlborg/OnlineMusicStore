@@ -56,7 +56,9 @@ public class UserPlaylists implements Initializable {
         artistColumn.setText("Artist");
         albumColumn.setText("Album");
 
+        //populate playlistTable with playlistNames
         setPlaylists();
+
         addToPlaylist();
 
 
@@ -65,10 +67,10 @@ public class UserPlaylists implements Initializable {
         albumColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
 
 
-        for (int i = 0; i<playlist.size(); i++){
-            songs.addAll(playlist.get(i));
+  //      for (int i = 0; i<playlist.size(); i++){
+    //        songs.addAll(playlist.get(i));
 
-        }
+      //  }
 
        // System.out.println(songss);
 
@@ -104,9 +106,11 @@ public class UserPlaylists implements Initializable {
     public void setPlaylists(){
         PlaylistSingleton pS = PlaylistSingleton.getInstance();
         playlist = pS.getPlaylist();
+        //add indexes to playlistName (playlistName objects) for every object that exists in playList hashmap.
         for (int i =1; i<=playlist.size(); i++) {
             playlistName.add(new PlaylistName(i));
 
+            //add indexes to playlistTableView
             playlistTableView.setItems(playlistName);
             playlistNameColumn.setCellValueFactory(new PropertyValueFactory<PlaylistName, Integer>("playlistNumber"));
         }
@@ -114,63 +118,25 @@ public class UserPlaylists implements Initializable {
 
     }
 
-    @FXML
-    void removePlaylist(ActionEvent event) {
-        PlaylistSingleton pS = PlaylistSingleton.getInstance();
-        playlist = pS.getPlaylist();
 
-        System.out.println(playlist);
-
-    }
-
+    //This method gets the row index when user clicks a row, use that row index as a key value to the HashMap objects in the playlist
+    //observable list. Populate the song tableview with that hashmap object
     @FXML
     public void addToPlaylist(){
+    try {
 
-        //get row index when user clicks a row, use that row index as a key value to the HashMap objects in the playlist
-        //observable list. Populate the song tableview with that hashmap object
         playlistTableView.setOnMouseClicked(event -> {
-            int index = playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1;
-            System.out.println(playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber()-1);
+            int index = playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber() - 1;
+            System.out.println(playlistTableView.getSelectionModel().getSelectedItem().getPlaylistNumber() - 1);
             playlistSongsTableView.setItems(playlist.get(index));
             System.out.println(playlist.get(index));
         });
-
-     /*   playlistTableView.setRowFactory( tableView -> {
-            TableRow<PlaylistName> row = new TableRow<>();
-
-            row.setOnMouseClicked(event -> {
-
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Integer rowData = row.getIndex();
-                    System.out.println(rowData);
-
-                    boolean songIsInList = false;
-
-
-                    for (int i = 0; i < playlist.size(); i++){
-                        if (playlist.containsKey(rowData)){
-                            songIsInList = true;
-                            playlistSongsTableView.setItems(playlist.get(rowData));
-                            songColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("songName"));
-                           artistColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("artistName"));
-                           albumColumn.setCellValueFactory(new PropertyValueFactory<Song, String>("albumName"));
-
-                           //break;
-
-                            System.out.println(playlist.get(rowData));
-                        }
-                    }
-                //    if (!songIsInList){
-                //        playlistSongs.add(rowData);
-                  //  }
-                }
-
-            });
-            return row;
-        });
-*/
-
+    }catch (NullPointerException e){
+        System.out.println("NullpointerException");
+    }
+    catch (Exception e){
+        System.out.println(e.toString());
     }
 
-
+    }
 }

@@ -1,10 +1,12 @@
 package OnlinemusicstoreClasses;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
+
+//This class exists just to send a playlistobject from one scene to another
 
 public class PlaylistSingleton {
     //private ObservableList<Song> songs = FXCollections.observableArrayList();

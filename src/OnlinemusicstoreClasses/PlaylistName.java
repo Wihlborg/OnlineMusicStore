@@ -2,20 +2,21 @@ package OnlinemusicstoreClasses;
 
 import java.util.HashMap;
 
+//this map exists to be able to set create indexes on playListTableView in class UserPlaylists
 public class PlaylistName {
-    private String playlistNumber;
+    private int playlistNumber;
     private HashMap<Integer, Song> playlist;
 
     public PlaylistName(int playlistNumber) {
-        this.playlistNumber = Integer.toString(playlistNumber);
+        this.playlistNumber = playlistNumber;
 
     }
 
     public int getPlaylistNumber() {
-        return Integer.parseInt(playlistNumber);
+        return playlistNumber;
     }
 
-    public void setPlaylistNumber(String playlistNumber) {
+    public void setPlaylistNumber(int playlistNumber) {
         this.playlistNumber = playlistNumber;
     }
 
